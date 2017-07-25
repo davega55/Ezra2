@@ -54,6 +54,24 @@ namespace Ezra
             decimal telephone = dsEzra.MonthlyNumbers.First(a => a.CatNum == 26).Amount;
             decimal pulpitSupply = dsEzra.MonthlyNumbers.First(a => a.CatNum == 23).Amount;
             decimal miscellaneous = dsEzra.MonthlyNumbers.First(a => a.CatNum == 16).Amount;
+            //// Get withholding amounts from FundTransactions
+            taWithholding.FillWithholding(dsEzra.Withholding, dtBeginDate, dtEndDate, 9);
+            decimal stateWH = dsEzra.Withholding.First().DepAmount;
+            taWithholding.FillWithholding(dsEzra.Withholding, dtBeginDate, dtEndDate, 10);
+            decimal fedWH = dsEzra.Withholding.First().DepAmount;
+            decimal totWH = stateWH + fedWH;
+            string dateHeading = "For " + dtBeginDate.ToString("MM/dd/yy") + " To " + dtEndDate.ToString("MM/dd/yy");
+            decimal budget = Math.Round((decimal)taQueries.GetBudget("2016") / 12, 2);
+            decimal budOverUnder = Math.Round((offering + dividend) - budget, 2);
+            string strBudOverUnder = string.Empty;
+            if(budOverUnder < 0)
+            {
+                strBudOverUnder = "($" + Math.Abs(budOverUnder).ToString() + ") Under Budget";
+            }
+            else
+            {
+                strBudOverUnder = "$" + budOverUnder.ToString() + " Over Budget";
+            }
 
             ReportParameter rpOffering = new ReportParameter("Offering", offering.ToString());
             ReportParameter rpDividend = new ReportParameter("Dividend", dividend.ToString());
@@ -62,7 +80,8 @@ namespace Ezra
             ReportParameter rpInsurance = new ReportParameter("Insurance", insurance.ToString());
             ReportParameter rpMissions = new ReportParameter("Missions", missions.ToString());
             ReportParameter rpCompensation = new ReportParameter("Compensation", compensation.ToString());
-            ReportParameter rpWithholding = new ReportParameter("Withholding", withholding.ToString());
+            ////ReportParameter rpWithholding = new ReportParameter("Withholding", withholding.ToString());
+            ReportParameter rpWithholding = new ReportParameter("Withholding", totWH.ToString());
             ReportParameter rpBusinessSupplies = new ReportParameter("BusinessSupplies", businessSupplies.ToString());
             ReportParameter rpBuildingSupplies = new ReportParameter("BuildingSupplies", buildingSupplies.ToString());
             ReportParameter rpPastorsExpense = new ReportParameter("PastorsExpense", pastorsExpense.ToString());
@@ -71,8 +90,12 @@ namespace Ezra
             ReportParameter rpTelephone = new ReportParameter("Telephone", telephone.ToString());
             ReportParameter rpPulpitSupply = new ReportParameter("PulpitSupply", pulpitSupply.ToString());
             ReportParameter rpMiscellaneous = new ReportParameter("Miscellaneous", miscellaneous.ToString());
+            ReportParameter rpDateHeading = new ReportParameter("DateHeading", dateHeading);
+            ReportParameter rpBudget = new ReportParameter("Budget", budget.ToString());
+            ReportParameter rpBudOverUnder = new ReportParameter("BudgetOverUnder", strBudOverUnder);
             ReportParameter[] parms = new ReportParameter[] { rpOffering, rpDividend, rpMaintenance, rpCleaning, rpInsurance, rpMissions, rpCompensation,
-                rpWithholding, rpBusinessSupplies, rpBuildingSupplies, rpPastorsExpense, rpGas, rpElectric, rpTelephone, rpPulpitSupply, rpMiscellaneous};
+                rpWithholding, rpBusinessSupplies, rpBuildingSupplies, rpPastorsExpense, rpGas, rpElectric, rpTelephone, rpPulpitSupply, rpMiscellaneous,
+                rpDateHeading, rpBudget, rpBudOverUnder};
             return parms;
         }
     }

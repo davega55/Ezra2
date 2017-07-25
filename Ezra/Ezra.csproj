@@ -72,6 +72,12 @@
     <Compile Include="Forms\MainForms\frmChecking.Designer.cs">
       <DependentUpon>frmChecking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForms\frmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\frmImport.Designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="Forms\MainForms\frmChecking.resx">
       <DependentUpon>frmChecking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\frmImport.resx">
+      <DependentUpon>frmImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

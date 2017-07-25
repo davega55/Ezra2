@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
+using Ezra.Forms.MainForms;
 
 namespace Ezra
 {
@@ -46,6 +47,12 @@ namespace Ezra
             cmbYear.Items.AddRange(years);
             string[] months = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
             cmbMonth.Items.AddRange(months);
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            frmImport import = new frmImport();
+            import.Show();
         }
     }
 }

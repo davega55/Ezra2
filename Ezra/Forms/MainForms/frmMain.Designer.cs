@@ -30,6 +30,7 @@
         {
             this.btnChecking = new System.Windows.Forms.Button();
             this.grpReports = new System.Windows.Forms.GroupBox();
+            this.btnCombined = new System.Windows.Forms.Button();
             this.btnBudgetRpt = new System.Windows.Forms.Button();
             this.btnYTD = new System.Windows.Forms.Button();
             this.btnBalance = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.btnDeposits = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnBankRec = new System.Windows.Forms.Button();
-            this.btnCombined = new System.Windows.Forms.Button();
             this.btnBudget = new System.Windows.Forms.Button();
             this.grpReports.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,15 @@
             this.grpReports.TabIndex = 3;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
+            // 
+            // btnCombined
+            // 
+            this.btnCombined.Location = new System.Drawing.Point(44, 317);
+            this.btnCombined.Name = "btnCombined";
+            this.btnCombined.Size = new System.Drawing.Size(135, 37);
+            this.btnCombined.TabIndex = 18;
+            this.btnCombined.Text = "Combined Month/YTD Report";
+            this.btnCombined.UseVisualStyleBackColor = true;
             // 
             // btnBudgetRpt
             // 
@@ -244,6 +253,7 @@
             this.btnImport.TabIndex = 2;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnBankRec
             // 
@@ -253,15 +263,6 @@
             this.btnBankRec.TabIndex = 3;
             this.btnBankRec.Text = "Bank Reconcile";
             this.btnBankRec.UseVisualStyleBackColor = true;
-            // 
-            // btnCombined
-            // 
-            this.btnCombined.Location = new System.Drawing.Point(44, 317);
-            this.btnCombined.Name = "btnCombined";
-            this.btnCombined.Size = new System.Drawing.Size(135, 37);
-            this.btnCombined.TabIndex = 18;
-            this.btnCombined.Text = "Combined Month/YTD Report";
-            this.btnCombined.UseVisualStyleBackColor = true;
             // 
             // btnBudget
             // 

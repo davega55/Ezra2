@@ -29,17 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.bndsTmpCatAmounts = new System.Windows.Forms.BindingSource(this.components);
             this.dsEzra = new Ezra.DataAccess.EzraDataSet();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.bndsMonthlyNumbers = new System.Windows.Forms.BindingSource(this.components);
             this.taMonthlyNumbers = new Ezra.DataAccess.EzraDataSetTableAdapters.MonthlyNumbersTableAdapter();
             this.taManager = new Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager();
+            this.taWithholding = new Ezra.DataAccess.EzraDataSetTableAdapters.WithholdingTableAdapter();
+            this.taQueries = new Ezra.DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bndsTmpCatAmounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEzra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsMonthlyNumbers)).BeginInit();
             this.SuspendLayout();
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "MonthlyDS";
+            reportDataSource1.Value = this.bndsTmpCatAmounts;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Ezra.Reports.MonthlyReport.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(856, 485);
+            this.reportViewer1.TabIndex = 0;
             // 
             // bndsTmpCatAmounts
             // 
@@ -50,18 +64,6 @@
             // 
             this.dsEzra.DataSetName = "EzraDataSet";
             this.dsEzra.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "MonthlyDS";
-            reportDataSource3.Value = this.bndsTmpCatAmounts;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Ezra.Reports.MonthlyReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(856, 485);
-            this.reportViewer1.TabIndex = 0;
             // 
             // bndsMonthlyNumbers
             // 
@@ -97,6 +99,10 @@
             this.taManager.UpdateOrder = Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.taManager.VendorsTableAdapter = null;
             // 
+            // taWithholding
+            // 
+            this.taWithholding.ClearBeforeFill = true;
+            // 
             // frmMonthly
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,5 +127,7 @@
         private System.Windows.Forms.BindingSource bndsMonthlyNumbers;
         private DataAccess.EzraDataSetTableAdapters.MonthlyNumbersTableAdapter taMonthlyNumbers;
         private DataAccess.EzraDataSetTableAdapters.TableAdapterManager taManager;
+        private DataAccess.EzraDataSetTableAdapters.WithholdingTableAdapter taWithholding;
+        private DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter taQueries;
     }
 }
