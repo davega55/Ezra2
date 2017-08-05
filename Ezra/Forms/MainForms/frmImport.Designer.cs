@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ofdImport = new System.Windows.Forms.OpenFileDialog();
             this.txtFileName = new System.Windows.Forms.TextBox();
             this.lblFile = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
             this.txtDisplay = new System.Windows.Forms.TextBox();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.DSEzra = new Ezra.DataAccess.EzraDataSet();
+            this.bndsBankTrans = new System.Windows.Forms.BindingSource(this.components);
+            this.taBankTrans = new Ezra.DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter();
+            this.taManager = new Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager();
+            ((System.ComponentModel.ISupportInitialize)(this.DSEzra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bndsBankTrans)).BeginInit();
             this.SuspendLayout();
             // 
             // ofdImport
@@ -86,6 +93,44 @@
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
+            // DSEzra
+            // 
+            this.DSEzra.DataSetName = "EzraDataSet";
+            this.DSEzra.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bndsBankTrans
+            // 
+            this.bndsBankTrans.DataMember = "BankTrans";
+            this.bndsBankTrans.DataSource = this.DSEzra;
+            // 
+            // taBankTrans
+            // 
+            this.taBankTrans.ClearBeforeFill = true;
+            // 
+            // taManager
+            // 
+            this.taManager.BackupDataSetBeforeUpdate = false;
+            this.taManager.BalancesTableAdapter = null;
+            this.taManager.BankTransTableAdapter = this.taBankTrans;
+            this.taManager.BudgetTableAdapter = null;
+            this.taManager.CategoriesTableAdapter = null;
+            this.taManager.CKCUCheckingTableAdapter = null;
+            this.taManager.CKCUSavingsTableAdapter = null;
+            this.taManager.ContributionsTableAdapter = null;
+            this.taManager.ContributorsTableAdapter = null;
+            this.taManager.ControlTableAdapter = null;
+            this.taManager.CreditCardTableAdapter = null;
+            this.taManager.EmployeePayDatesTableAdapter = null;
+            this.taManager.EmployeePayDedTableAdapter = null;
+            this.taManager.EmployeesTableAdapter = null;
+            this.taManager.FundsTableAdapter = null;
+            this.taManager.FundTransactionsTableAdapter = null;
+            this.taManager.GroupsTableAdapter = null;
+            this.taManager.PeoplesCheckingTableAdapter = null;
+            this.taManager.TypeTableAdapter = null;
+            this.taManager.UpdateOrder = Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.taManager.VendorsTableAdapter = null;
+            // 
             // frmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,6 +143,8 @@
             this.Controls.Add(this.txtFileName);
             this.Name = "frmImport";
             this.Text = "frmImport";
+            ((System.ComponentModel.ISupportInitialize)(this.DSEzra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bndsBankTrans)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +158,9 @@
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.TextBox txtDisplay;
         private System.Windows.Forms.Button btnLoad;
+        private DataAccess.EzraDataSet DSEzra;
+        private System.Windows.Forms.BindingSource bndsBankTrans;
+        private DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter taBankTrans;
+        private DataAccess.EzraDataSetTableAdapters.TableAdapterManager taManager;
     }
 }

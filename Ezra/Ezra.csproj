@@ -84,6 +84,12 @@
     <Compile Include="Forms\MainForms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForms\frmReconcile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\frmReconcile.Designer.cs">
+      <DependentUpon>frmReconcile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReportForms\frmMonthly.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\frmReconcile.resx">
+      <DependentUpon>frmReconcile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\frmMonthly.resx">
       <DependentUpon>frmMonthly.cs</DependentUpon>

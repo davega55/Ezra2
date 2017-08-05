@@ -54,5 +54,11 @@ namespace Ezra
             frmImport import = new frmImport();
             import.Show();
         }
+
+        private void btnBankRec_Click(object sender, EventArgs e)
+        {
+            frmReconcile rec = new frmReconcile();
+            rec.Show();
+        }
     }
 }

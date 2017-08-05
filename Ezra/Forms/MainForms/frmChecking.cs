@@ -28,31 +28,37 @@ namespace Ezra
 
         private void frmChecking_Load(object sender, EventArgs e)
         {
-            string[] years = Utility.GetAvailableYears();
-            tsCmbYear.Items.AddRange(years);
-            string[] months = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
-            tsCmbMonth.Items.AddRange(months);
+            taVendors.Fill(this.dsEzra.Vendors);
+            taCategories.Fill(this.dsEzra.Categories);
             taCKCUChecking.Fill(dsEzra.CKCUChecking);
+            LoadToolbar();
         }
 
-        private void tsbLoad_Click(object sender, EventArgs e)
+        private void LoadToolbar()
         {
-            if (tsCmbMonth.SelectedItem == null)
-            {
-                MessageBox.Show("You must select a month");
-                return;
-            }
-            if (tsCmbYear.SelectedItem == null)
-            {
-                MessageBox.Show("You must select a year");
-                return;
-            }
-            int monthValue = tsCmbMonth.SelectedIndex + 1;
-            int yearValue = int.Parse(tsCmbYear.SelectedItem.ToString());
-            DateTime beginDate = new DateTime(yearValue, monthValue, 1);
-            DateTime endDate = beginDate.AddMonths(1).AddDays(-1);
-            MessageBox.Show(beginDate.ToShortDateString());
-            MessageBox.Show(endDate.ToShortDateString());
+            var tsDatePicker = new ToolStripControlHost(new DateTimePicker());
+            var dateLabel = new ToolStripLabel();
+            var seperate = new ToolStripSeparator();
+            var refreshButton = new ToolStripButton();
+            refreshButton.Text = "Refresh";
+            refreshButton.Click += new EventHandler(refreshButton_Click);
+            dateLabel.Text = "Begin Date";
+            dateLabel.Name = "tsbLabel";
+            ((DateTimePicker)tsDatePicker.Control).Format = DateTimePickerFormat.Short;
+            tsDatePicker.Width = 100;
+            tsDatePicker.Name = "beginDate";
+            
+            tsbChecking.Items.Add(dateLabel);
+            tsbChecking.Items.Add(tsDatePicker);
+            tsbChecking.Items.Add(seperate);
+            tsbChecking.Items.Add(refreshButton);
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            ToolStripControlHost date = (ToolStripControlHost)tsbChecking.Items["beginDate"];
+            DateTime beginDate = ((DateTimePicker)date.Control).Value;
+            DateTime endDate = DateTime.MaxValue;
             taCKCUChecking.FillByDate(dsEzra.CKCUChecking, beginDate, endDate);
         }
     }

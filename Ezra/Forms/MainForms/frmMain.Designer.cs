@@ -263,6 +263,7 @@
             this.btnBankRec.TabIndex = 3;
             this.btnBankRec.Text = "Bank Reconcile";
             this.btnBankRec.UseVisualStyleBackColor = true;
+            this.btnBankRec.Click += new System.EventHandler(this.btnBankRec_Click);
             // 
             // btnBudget
             // 
