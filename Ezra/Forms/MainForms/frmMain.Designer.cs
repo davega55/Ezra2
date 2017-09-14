@@ -51,6 +51,7 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.btnBankRec = new System.Windows.Forms.Button();
             this.btnBudget = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.grpReports.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +104,7 @@
             // 
             // btnYTD
             // 
-            this.btnYTD.Location = new System.Drawing.Point(44, 160);
+            this.btnYTD.Location = new System.Drawing.Point(44, 188);
             this.btnYTD.Name = "btnYTD";
             this.btnYTD.Size = new System.Drawing.Size(135, 23);
             this.btnYTD.TabIndex = 14;
@@ -155,7 +156,7 @@
             // 
             // btnMonthly
             // 
-            this.btnMonthly.Location = new System.Drawing.Point(44, 189);
+            this.btnMonthly.Location = new System.Drawing.Point(44, 160);
             this.btnMonthly.Name = "btnMonthly";
             this.btnMonthly.Size = new System.Drawing.Size(135, 23);
             this.btnMonthly.TabIndex = 15;
@@ -181,6 +182,7 @@
             this.btnSavings.TabIndex = 6;
             this.btnSavings.Text = "CKCU Savings";
             this.btnSavings.UseVisualStyleBackColor = true;
+            this.btnSavings.Click += new System.EventHandler(this.btnSavings_Click);
             // 
             // btnFundTrans
             // 
@@ -274,11 +276,22 @@
             this.btnBudget.Text = "Budgets";
             this.btnBudget.UseVisualStyleBackColor = true;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(42, 284);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(126, 23);
+            this.btnTest.TabIndex = 12;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 483);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnBudget);
             this.Controls.Add(this.btnBankRec);
             this.Controls.Add(this.btnImport);
@@ -326,5 +339,6 @@
         private System.Windows.Forms.Button btnBankRec;
         private System.Windows.Forms.Button btnCombined;
         private System.Windows.Forms.Button btnBudget;
+        private System.Windows.Forms.Button btnTest;
     }
 }

@@ -57,8 +57,20 @@ namespace Ezra
 
         private void btnBankRec_Click(object sender, EventArgs e)
         {
-            frmReconcile rec = new frmReconcile();
-            rec.Show();
+            frmCheckingDetail detail = new frmCheckingDetail();
+            detail.Show();
+        }
+
+        private void btnSavings_Click(object sender, EventArgs e)
+        {
+            frmSavings sav = new frmSavings();
+            sav.Show();
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            frmCheckingDetail detail = new frmCheckingDetail();
+            detail.Show();
         }
     }
 }

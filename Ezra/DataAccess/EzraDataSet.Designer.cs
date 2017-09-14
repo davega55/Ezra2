@@ -62,8 +62,6 @@ namespace Ezra.DataAccess {
         
         private VendorsDataTable tableVendors;
         
-        private CKCUCheckingSortedDataTable tableCKCUCheckingSorted;
-        
         private uspGetCheckingRecordsDataTable tableuspGetCheckingRecords;
         
         private TransReportDataTable tableTransReport;
@@ -158,9 +156,6 @@ namespace Ezra.DataAccess {
                 }
                 if ((ds.Tables["Vendors"] != null)) {
                     base.Tables.Add(new VendorsDataTable(ds.Tables["Vendors"]));
-                }
-                if ((ds.Tables["CKCUCheckingSorted"] != null)) {
-                    base.Tables.Add(new CKCUCheckingSortedDataTable(ds.Tables["CKCUCheckingSorted"]));
                 }
                 if ((ds.Tables["uspGetCheckingRecords"] != null)) {
                     base.Tables.Add(new uspGetCheckingRecordsDataTable(ds.Tables["uspGetCheckingRecords"]));
@@ -389,16 +384,6 @@ namespace Ezra.DataAccess {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public CKCUCheckingSortedDataTable CKCUCheckingSorted {
-            get {
-                return this.tableCKCUCheckingSorted;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public uspGetCheckingRecordsDataTable uspGetCheckingRecords {
             get {
                 return this.tableuspGetCheckingRecords;
@@ -569,9 +554,6 @@ namespace Ezra.DataAccess {
                 if ((ds.Tables["Vendors"] != null)) {
                     base.Tables.Add(new VendorsDataTable(ds.Tables["Vendors"]));
                 }
-                if ((ds.Tables["CKCUCheckingSorted"] != null)) {
-                    base.Tables.Add(new CKCUCheckingSortedDataTable(ds.Tables["CKCUCheckingSorted"]));
-                }
                 if ((ds.Tables["uspGetCheckingRecords"] != null)) {
                     base.Tables.Add(new uspGetCheckingRecordsDataTable(ds.Tables["uspGetCheckingRecords"]));
                 }
@@ -734,12 +716,6 @@ namespace Ezra.DataAccess {
                     this.tableVendors.InitVars();
                 }
             }
-            this.tableCKCUCheckingSorted = ((CKCUCheckingSortedDataTable)(base.Tables["CKCUCheckingSorted"]));
-            if ((initTable == true)) {
-                if ((this.tableCKCUCheckingSorted != null)) {
-                    this.tableCKCUCheckingSorted.InitVars();
-                }
-            }
             this.tableuspGetCheckingRecords = ((uspGetCheckingRecordsDataTable)(base.Tables["uspGetCheckingRecords"]));
             if ((initTable == true)) {
                 if ((this.tableuspGetCheckingRecords != null)) {
@@ -818,8 +794,6 @@ namespace Ezra.DataAccess {
             base.Tables.Add(this.tableType);
             this.tableVendors = new VendorsDataTable();
             base.Tables.Add(this.tableVendors);
-            this.tableCKCUCheckingSorted = new CKCUCheckingSortedDataTable();
-            base.Tables.Add(this.tableCKCUCheckingSorted);
             this.tableuspGetCheckingRecords = new uspGetCheckingRecordsDataTable();
             base.Tables.Add(this.tableuspGetCheckingRecords);
             this.tableTransReport = new TransReportDataTable();
@@ -943,12 +917,6 @@ namespace Ezra.DataAccess {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeVendors() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeCKCUCheckingSorted() {
             return false;
         }
         
@@ -1093,9 +1061,6 @@ namespace Ezra.DataAccess {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void VendorsRowChangeEventHandler(object sender, VendorsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void CKCUCheckingSortedRowChangeEventHandler(object sender, CKCUCheckingSortedRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void uspGetCheckingRecordsRowChangeEventHandler(object sender, uspGetCheckingRecordsRowChangeEvent e);
@@ -1627,7 +1592,7 @@ namespace Ezra.DataAccess {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BankTransRow AddBankTransRow(string tranType, System.DateTime tranDate, decimal tranAmt, string tranBankID, string tranCheckNo, string tranName, string tranMemo, int tranChkID) {
+            public BankTransRow AddBankTransRow(string tranType, System.DateTime tranDate, decimal tranAmt, long tranBankID, string tranCheckNo, string tranName, string tranMemo, int tranChkID) {
                 BankTransRow rowBankTransRow = ((BankTransRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1690,7 +1655,7 @@ namespace Ezra.DataAccess {
                 base.Columns.Add(this.columntranDate);
                 this.columntranAmt = new global::System.Data.DataColumn("tranAmt", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntranAmt);
-                this.columntranBankID = new global::System.Data.DataColumn("tranBankID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columntranBankID = new global::System.Data.DataColumn("tranBankID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntranBankID);
                 this.columntranCheckNo = new global::System.Data.DataColumn("tranCheckNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntranCheckNo);
@@ -1709,8 +1674,6 @@ namespace Ezra.DataAccess {
                 this.columntranNo.ReadOnly = true;
                 this.columntranNo.Unique = true;
                 this.columntranType.MaxLength = 10;
-                this.columntranBankID.MaxLength = 100;
-                this.columntranCheckNo.MaxLength = 15;
                 this.columntranName.MaxLength = 50;
                 this.columntranMemo.MaxLength = 100;
                 this.columntranChkID.DefaultValue = ((int)(0));
@@ -2691,7 +2654,7 @@ namespace Ezra.DataAccess {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingRow AddCKCUCheckingRow(System.DateTime ChkDate, string ChkNo, string ChkDesc, decimal ChkPymt, decimal ChkDep, decimal ChkBalance, string ChkCat, bool ChkRec, string ChkMemo, int NewCatID, int ChkVendID, short ChkDepNo, string ChkBanTransNo, string ChkDepImage) {
+            public CKCUCheckingRow AddCKCUCheckingRow(System.DateTime ChkDate, string ChkNo, string ChkDesc, decimal ChkPymt, decimal ChkDep, decimal ChkBalance, string ChkCat, bool ChkRec, string ChkMemo, int NewCatID, int ChkVendID, short ChkDepNo, long ChkBanTransNo, string ChkDepImage) {
                 CKCUCheckingRow rowCKCUCheckingRow = ((CKCUCheckingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2784,7 +2747,7 @@ namespace Ezra.DataAccess {
                 base.Columns.Add(this.columnChkVendID);
                 this.columnChkDepNo = new global::System.Data.DataColumn("ChkDepNo", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChkDepNo);
-                this.columnChkBanTransNo = new global::System.Data.DataColumn("ChkBanTransNo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnChkBanTransNo = new global::System.Data.DataColumn("ChkBanTransNo", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChkBanTransNo);
                 this.columnChkDepImage = new global::System.Data.DataColumn("ChkDepImage", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChkDepImage);
@@ -2799,8 +2762,8 @@ namespace Ezra.DataAccess {
                 this.columnChkNo.MaxLength = 20;
                 this.columnChkDesc.MaxLength = 30;
                 this.columnChkCat.MaxLength = 25;
+                this.columnChkRec.DefaultValue = ((bool)(false));
                 this.columnChkMemo.MaxLength = 150;
-                this.columnChkBanTransNo.MaxLength = 100;
                 this.columnChkDepImage.MaxLength = 1073741823;
             }
             
@@ -8287,470 +8250,6 @@ namespace Ezra.DataAccess {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class CKCUCheckingSortedDataTable : global::System.Data.TypedTableBase<CKCUCheckingSortedRow> {
-            
-            private global::System.Data.DataColumn columnChkDate;
-            
-            private global::System.Data.DataColumn columnChkID;
-            
-            private global::System.Data.DataColumn columnChkNo;
-            
-            private global::System.Data.DataColumn columnChkDesc;
-            
-            private global::System.Data.DataColumn columnChkPymt;
-            
-            private global::System.Data.DataColumn columnChkDep;
-            
-            private global::System.Data.DataColumn columnChkBalance;
-            
-            private global::System.Data.DataColumn columnChkCat;
-            
-            private global::System.Data.DataColumn columnChkRec;
-            
-            private global::System.Data.DataColumn columnChkMemo;
-            
-            private global::System.Data.DataColumn columnNewCatID;
-            
-            private global::System.Data.DataColumn columnChkVendID;
-            
-            private global::System.Data.DataColumn columnChkDepNo;
-            
-            private global::System.Data.DataColumn columnChkBanTransNo;
-            
-            private global::System.Data.DataColumn columnChkDepImage;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedDataTable() {
-                this.TableName = "CKCUCheckingSorted";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CKCUCheckingSortedDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected CKCUCheckingSortedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkDateColumn {
-                get {
-                    return this.columnChkDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkIDColumn {
-                get {
-                    return this.columnChkID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkNoColumn {
-                get {
-                    return this.columnChkNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkDescColumn {
-                get {
-                    return this.columnChkDesc;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkPymtColumn {
-                get {
-                    return this.columnChkPymt;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkDepColumn {
-                get {
-                    return this.columnChkDep;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkBalanceColumn {
-                get {
-                    return this.columnChkBalance;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkCatColumn {
-                get {
-                    return this.columnChkCat;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkRecColumn {
-                get {
-                    return this.columnChkRec;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkMemoColumn {
-                get {
-                    return this.columnChkMemo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NewCatIDColumn {
-                get {
-                    return this.columnNewCatID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkVendIDColumn {
-                get {
-                    return this.columnChkVendID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkDepNoColumn {
-                get {
-                    return this.columnChkDepNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkBanTransNoColumn {
-                get {
-                    return this.columnChkBanTransNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ChkDepImageColumn {
-                get {
-                    return this.columnChkDepImage;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedRow this[int index] {
-                get {
-                    return ((CKCUCheckingSortedRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CKCUCheckingSortedRowChangeEventHandler CKCUCheckingSortedRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CKCUCheckingSortedRowChangeEventHandler CKCUCheckingSortedRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CKCUCheckingSortedRowChangeEventHandler CKCUCheckingSortedRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event CKCUCheckingSortedRowChangeEventHandler CKCUCheckingSortedRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddCKCUCheckingSortedRow(CKCUCheckingSortedRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedRow AddCKCUCheckingSortedRow(System.DateTime ChkDate, string ChkNo, string ChkDesc, decimal ChkPymt, decimal ChkDep, decimal ChkBalance, string ChkCat, bool ChkRec, string ChkMemo, int NewCatID, int ChkVendID, short ChkDepNo, string ChkBanTransNo, string ChkDepImage) {
-                CKCUCheckingSortedRow rowCKCUCheckingSortedRow = ((CKCUCheckingSortedRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        ChkDate,
-                        null,
-                        ChkNo,
-                        ChkDesc,
-                        ChkPymt,
-                        ChkDep,
-                        ChkBalance,
-                        ChkCat,
-                        ChkRec,
-                        ChkMemo,
-                        NewCatID,
-                        ChkVendID,
-                        ChkDepNo,
-                        ChkBanTransNo,
-                        ChkDepImage};
-                rowCKCUCheckingSortedRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCKCUCheckingSortedRow);
-                return rowCKCUCheckingSortedRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedRow FindByChkID(int ChkID) {
-                return ((CKCUCheckingSortedRow)(this.Rows.Find(new object[] {
-                            ChkID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                CKCUCheckingSortedDataTable cln = ((CKCUCheckingSortedDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new CKCUCheckingSortedDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnChkDate = base.Columns["ChkDate"];
-                this.columnChkID = base.Columns["ChkID"];
-                this.columnChkNo = base.Columns["ChkNo"];
-                this.columnChkDesc = base.Columns["ChkDesc"];
-                this.columnChkPymt = base.Columns["ChkPymt"];
-                this.columnChkDep = base.Columns["ChkDep"];
-                this.columnChkBalance = base.Columns["ChkBalance"];
-                this.columnChkCat = base.Columns["ChkCat"];
-                this.columnChkRec = base.Columns["ChkRec"];
-                this.columnChkMemo = base.Columns["ChkMemo"];
-                this.columnNewCatID = base.Columns["NewCatID"];
-                this.columnChkVendID = base.Columns["ChkVendID"];
-                this.columnChkDepNo = base.Columns["ChkDepNo"];
-                this.columnChkBanTransNo = base.Columns["ChkBanTransNo"];
-                this.columnChkDepImage = base.Columns["ChkDepImage"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnChkDate = new global::System.Data.DataColumn("ChkDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkDate);
-                this.columnChkID = new global::System.Data.DataColumn("ChkID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkID);
-                this.columnChkNo = new global::System.Data.DataColumn("ChkNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkNo);
-                this.columnChkDesc = new global::System.Data.DataColumn("ChkDesc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkDesc);
-                this.columnChkPymt = new global::System.Data.DataColumn("ChkPymt", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkPymt);
-                this.columnChkDep = new global::System.Data.DataColumn("ChkDep", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkDep);
-                this.columnChkBalance = new global::System.Data.DataColumn("ChkBalance", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkBalance);
-                this.columnChkCat = new global::System.Data.DataColumn("ChkCat", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkCat);
-                this.columnChkRec = new global::System.Data.DataColumn("ChkRec", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkRec);
-                this.columnChkMemo = new global::System.Data.DataColumn("ChkMemo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkMemo);
-                this.columnNewCatID = new global::System.Data.DataColumn("NewCatID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNewCatID);
-                this.columnChkVendID = new global::System.Data.DataColumn("ChkVendID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkVendID);
-                this.columnChkDepNo = new global::System.Data.DataColumn("ChkDepNo", typeof(short), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkDepNo);
-                this.columnChkBanTransNo = new global::System.Data.DataColumn("ChkBanTransNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkBanTransNo);
-                this.columnChkDepImage = new global::System.Data.DataColumn("ChkDepImage", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnChkDepImage);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnChkID}, true));
-                this.columnChkID.AutoIncrement = true;
-                this.columnChkID.AutoIncrementSeed = -1;
-                this.columnChkID.AutoIncrementStep = -1;
-                this.columnChkID.AllowDBNull = false;
-                this.columnChkID.ReadOnly = true;
-                this.columnChkID.Unique = true;
-                this.columnChkNo.MaxLength = 20;
-                this.columnChkDesc.MaxLength = 30;
-                this.columnChkCat.MaxLength = 25;
-                this.columnChkMemo.MaxLength = 150;
-                this.columnChkBanTransNo.MaxLength = 100;
-                this.columnChkDepImage.MaxLength = 1073741823;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedRow NewCKCUCheckingSortedRow() {
-                return ((CKCUCheckingSortedRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new CKCUCheckingSortedRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(CKCUCheckingSortedRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.CKCUCheckingSortedRowChanged != null)) {
-                    this.CKCUCheckingSortedRowChanged(this, new CKCUCheckingSortedRowChangeEvent(((CKCUCheckingSortedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.CKCUCheckingSortedRowChanging != null)) {
-                    this.CKCUCheckingSortedRowChanging(this, new CKCUCheckingSortedRowChangeEvent(((CKCUCheckingSortedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.CKCUCheckingSortedRowDeleted != null)) {
-                    this.CKCUCheckingSortedRowDeleted(this, new CKCUCheckingSortedRowChangeEvent(((CKCUCheckingSortedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.CKCUCheckingSortedRowDeleting != null)) {
-                    this.CKCUCheckingSortedRowDeleting(this, new CKCUCheckingSortedRowChangeEvent(((CKCUCheckingSortedRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveCKCUCheckingSortedRow(CKCUCheckingSortedRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                EzraDataSet ds = new EzraDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "CKCUCheckingSortedDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class uspGetCheckingRecordsDataTable : global::System.Data.TypedTableBase<uspGetCheckingRecordsRow> {
             
             private global::System.Data.DataColumn columnChkID;
@@ -10803,10 +10302,10 @@ namespace Ezra.DataAccess {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string tranBankID {
+            public long tranBankID {
                 get {
                     try {
-                        return ((string)(this[this.tableBankTrans.tranBankIDColumn]));
+                        return ((long)(this[this.tableBankTrans.tranBankIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'tranBankID\' in table \'BankTrans\' is DBNull.", e);
@@ -11445,10 +10944,10 @@ namespace Ezra.DataAccess {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkBanTransNo {
+            public long ChkBanTransNo {
                 get {
                     try {
-                        return ((string)(this[this.tableCKCUChecking.ChkBanTransNoColumn]));
+                        return ((long)(this[this.tableCKCUChecking.ChkBanTransNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'ChkBanTransNo\' in table \'CKCUChecking\' is DBNull.", e);
@@ -15276,424 +14775,6 @@ namespace Ezra.DataAccess {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class CKCUCheckingSortedRow : global::System.Data.DataRow {
-            
-            private CKCUCheckingSortedDataTable tableCKCUCheckingSorted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal CKCUCheckingSortedRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableCKCUCheckingSorted = ((CKCUCheckingSortedDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime ChkDate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableCKCUCheckingSorted.ChkDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkDate\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkDateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ChkID {
-                get {
-                    return ((int)(this[this.tableCKCUCheckingSorted.ChkIDColumn]));
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkNo {
-                get {
-                    try {
-                        return ((string)(this[this.tableCKCUCheckingSorted.ChkNoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkNo\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkNoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkDesc {
-                get {
-                    try {
-                        return ((string)(this[this.tableCKCUCheckingSorted.ChkDescColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkDesc\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkDescColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal ChkPymt {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableCKCUCheckingSorted.ChkPymtColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkPymt\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkPymtColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal ChkDep {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableCKCUCheckingSorted.ChkDepColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkDep\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkDepColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal ChkBalance {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableCKCUCheckingSorted.ChkBalanceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkBalance\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkBalanceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkCat {
-                get {
-                    try {
-                        return ((string)(this[this.tableCKCUCheckingSorted.ChkCatColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkCat\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkCatColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool ChkRec {
-                get {
-                    try {
-                        return ((bool)(this[this.tableCKCUCheckingSorted.ChkRecColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkRec\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkRecColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkMemo {
-                get {
-                    try {
-                        return ((string)(this[this.tableCKCUCheckingSorted.ChkMemoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkMemo\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkMemoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int NewCatID {
-                get {
-                    try {
-                        return ((int)(this[this.tableCKCUCheckingSorted.NewCatIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NewCatID\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.NewCatIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ChkVendID {
-                get {
-                    try {
-                        return ((int)(this[this.tableCKCUCheckingSorted.ChkVendIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkVendID\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkVendIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public short ChkDepNo {
-                get {
-                    try {
-                        return ((short)(this[this.tableCKCUCheckingSorted.ChkDepNoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkDepNo\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkDepNoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkBanTransNo {
-                get {
-                    try {
-                        return ((string)(this[this.tableCKCUCheckingSorted.ChkBanTransNoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkBanTransNo\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkBanTransNoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ChkDepImage {
-                get {
-                    try {
-                        return ((string)(this[this.tableCKCUCheckingSorted.ChkDepImageColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChkDepImage\' in table \'CKCUCheckingSorted\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCKCUCheckingSorted.ChkDepImageColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkDateNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkDateNull() {
-                this[this.tableCKCUCheckingSorted.ChkDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkNoNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkNoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkNoNull() {
-                this[this.tableCKCUCheckingSorted.ChkNoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkDescNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkDescColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkDescNull() {
-                this[this.tableCKCUCheckingSorted.ChkDescColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkPymtNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkPymtColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkPymtNull() {
-                this[this.tableCKCUCheckingSorted.ChkPymtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkDepNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkDepColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkDepNull() {
-                this[this.tableCKCUCheckingSorted.ChkDepColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkBalanceNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkBalanceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkBalanceNull() {
-                this[this.tableCKCUCheckingSorted.ChkBalanceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkCatNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkCatColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkCatNull() {
-                this[this.tableCKCUCheckingSorted.ChkCatColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkRecNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkRecColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkRecNull() {
-                this[this.tableCKCUCheckingSorted.ChkRecColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkMemoNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkMemoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkMemoNull() {
-                this[this.tableCKCUCheckingSorted.ChkMemoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNewCatIDNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.NewCatIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNewCatIDNull() {
-                this[this.tableCKCUCheckingSorted.NewCatIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkVendIDNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkVendIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkVendIDNull() {
-                this[this.tableCKCUCheckingSorted.ChkVendIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkDepNoNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkDepNoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkDepNoNull() {
-                this[this.tableCKCUCheckingSorted.ChkDepNoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkBanTransNoNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkBanTransNoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkBanTransNoNull() {
-                this[this.tableCKCUCheckingSorted.ChkBanTransNoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsChkDepImageNull() {
-                return this.IsNull(this.tableCKCUCheckingSorted.ChkDepImageColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetChkDepImageNull() {
-                this[this.tableCKCUCheckingSorted.ChkDepImageColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class uspGetCheckingRecordsRow : global::System.Data.DataRow {
             
             private uspGetCheckingRecordsDataTable tableuspGetCheckingRecords;
@@ -17423,40 +16504,6 @@ namespace Ezra.DataAccess {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class CKCUCheckingSortedRowChangeEvent : global::System.EventArgs {
-            
-            private CKCUCheckingSortedRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedRowChangeEvent(CKCUCheckingSortedRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CKCUCheckingSortedRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public class uspGetCheckingRecordsRowChangeEvent : global::System.EventArgs {
             
             private uspGetCheckingRecordsRow eventRow;
@@ -18250,28 +17297,76 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
             tableMapping.ColumnMappings.Add("tranType", "tranType");
             tableMapping.ColumnMappings.Add("tranDate", "tranDate");
             tableMapping.ColumnMappings.Add("tranAmt", "tranAmt");
-            tableMapping.ColumnMappings.Add("tranBankID", "tranBankID");
-            tableMapping.ColumnMappings.Add("tranCheckNo", "tranCheckNo");
             tableMapping.ColumnMappings.Add("tranName", "tranName");
             tableMapping.ColumnMappings.Add("tranMemo", "tranMemo");
             tableMapping.ColumnMappings.Add("tranChkID", "tranChkID");
+            tableMapping.ColumnMappings.Add("tranBankID", "tranBankID");
+            tableMapping.ColumnMappings.Add("tranCheckNo", "tranCheckNo");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [BankTrans] WHERE (([tranNo] = @Original_tranNo) AND ((@IsNull_tranType = 1 AND [tranType] IS NULL) OR ([tranType] = @Original_tranType)) AND ((@IsNull_tranDate = 1 AND [tranDate] IS NULL) OR ([tranDate] = @Original_tranDate)) AND ((@IsNull_tranAmt = 1 AND [tranAmt] IS NULL) OR ([tranAmt] = @Original_tranAmt)) AND ((@IsNull_tranName = 1 AND [tranName] IS NULL) OR ([tranName] = @Original_tranName)) AND ((@IsNull_tranMemo = 1 AND [tranMemo] IS NULL) OR ([tranMemo] = @Original_tranMemo)) AND ((@IsNull_tranChkID = 1 AND [tranChkID] IS NULL) OR ([tranChkID] = @Original_tranChkID)) AND ((@IsNull_tranBankID = 1 AND [tranBankID] IS NULL) OR ([tranBankID] = @Original_tranBankID)) AND ((@IsNull_tranCheckNo = 1 AND [tranCheckNo] IS NULL) OR ([tranCheckNo] = @Original_tranCheckNo)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranAmt", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranMemo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranMemo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranMemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranMemo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranChkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranChkID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranChkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranChkID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranBankID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranBankID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranCheckNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranCheckNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BankTrans] ([tranNo], [tranType], [tranDate], [tranAmt], [tran" +
-                "BankID], [tranCheckNo], [tranName], [tranMemo], [tranChkID]) VALUES (@tranNo, @t" +
-                "ranType, @tranDate, @tranAmt, @tranBankID, @tranCheckNo, @tranName, @tranMemo, @" +
-                "tranChkID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [BankTrans] ([tranType], [tranDate], [tranAmt], [tranName], [tranMemo" +
+                "], [tranChkID], [tranBankID], [tranCheckNo]) VALUES (@tranType, @tranDate, @tran" +
+                "Amt, @tranName, @tranMemo, @tranChkID, @tranBankID, @tranCheckNo)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranAmt", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranBankID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranCheckNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranMemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranMemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranChkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranChkID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranBankID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranCheckNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [BankTrans] SET [tranType] = @tranType, [tranDate] = @tranDate, [tranAmt] = @tranAmt, [tranName] = @tranName, [tranMemo] = @tranMemo, [tranChkID] = @tranChkID, [tranBankID] = @tranBankID, [tranCheckNo] = @tranCheckNo WHERE (([tranNo] = @Original_tranNo) AND ((@IsNull_tranType = 1 AND [tranType] IS NULL) OR ([tranType] = @Original_tranType)) AND ((@IsNull_tranDate = 1 AND [tranDate] IS NULL) OR ([tranDate] = @Original_tranDate)) AND ((@IsNull_tranAmt = 1 AND [tranAmt] IS NULL) OR ([tranAmt] = @Original_tranAmt)) AND ((@IsNull_tranName = 1 AND [tranName] IS NULL) OR ([tranName] = @Original_tranName)) AND ((@IsNull_tranMemo = 1 AND [tranMemo] IS NULL) OR ([tranMemo] = @Original_tranMemo)) AND ((@IsNull_tranChkID = 1 AND [tranChkID] IS NULL) OR ([tranChkID] = @Original_tranChkID)) AND ((@IsNull_tranBankID = 1 AND [tranBankID] IS NULL) OR ([tranBankID] = @Original_tranBankID)) AND ((@IsNull_tranCheckNo = 1 AND [tranCheckNo] IS NULL) OR ([tranCheckNo] = @Original_tranCheckNo)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranAmt", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranAmt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranMemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranMemo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranChkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranChkID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranBankID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranCheckNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranAmt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranAmt", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranAmt", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranAmt", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranMemo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranMemo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranMemo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranMemo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranChkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranChkID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranChkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranChkID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranBankID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranBankID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tranCheckNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tranCheckNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tranCheckNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18284,17 +17379,23 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT tranNo, tranType, tranDate, tranAmt, tranBankID, tranCheckNo, tranName, tr" +
-                "anMemo, tranChkID FROM dbo.BankTrans";
+            this._commandCollection[0].CommandText = "SELECT        tranNo, tranType, tranDate, tranAmt, tranName, tranMemo, tranChkID," +
+                " tranBankID, tranCheckNo\r\nFROM            BankTrans";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT tranNo, tranType, tranDate, tranAmt, tranBankID, tranCheckNo, tranName, tr" +
-                "anMemo, tranChkID FROM dbo.BankTrans where tranChkID < 1";
+            this._commandCollection[1].CommandText = "SELECT tranAmt, tranBankID, tranCheckNo, tranChkID, tranDate, tranMemo, tranName," +
+                " tranNo, tranType FROM BankTrans WHERE (tranBankID = @tranBId)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranBId", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT tranAmt, tranBankID, tranCheckNo, tranChkID, tranDate, tranMemo, tranName," +
+                " tranNo, tranType FROM BankTrans WHERE (tranChkID < 1)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18325,8 +17426,44 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByNotLinked(EzraDataSet.BankTransDataTable dataTable) {
+        public virtual int FillByBankId(EzraDataSet.BankTransDataTable dataTable, global::System.Nullable<long> tranBId) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((tranBId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(tranBId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual EzraDataSet.BankTransDataTable GetDataByBankId(global::System.Nullable<long> tranBId) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((tranBId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(tranBId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            EzraDataSet.BankTransDataTable dataTable = new EzraDataSet.BankTransDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByNotLinked(EzraDataSet.BankTransDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -18339,7 +17476,7 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual EzraDataSet.BankTransDataTable GetDataByNotLinked() {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             EzraDataSet.BankTransDataTable dataTable = new EzraDataSet.BankTransDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -18377,56 +17514,141 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int tranNo, string tranType, global::System.Nullable<global::System.DateTime> tranDate, global::System.Nullable<decimal> tranAmt, string tranBankID, string tranCheckNo, string tranName, string tranMemo, global::System.Nullable<int> tranChkID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(tranNo));
-            if ((tranType == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_tranNo, string Original_tranType, global::System.Nullable<global::System.DateTime> Original_tranDate, global::System.Nullable<decimal> Original_tranAmt, string Original_tranName, string Original_tranMemo, global::System.Nullable<int> Original_tranChkID, global::System.Nullable<long> Original_tranBankID, string Original_tranCheckNo) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_tranNo));
+            if ((Original_tranType == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(tranType));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_tranType));
+            }
+            if ((Original_tranDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_tranDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranAmt.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_tranAmt.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranName == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_tranName));
+            }
+            if ((Original_tranMemo == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_tranMemo));
+            }
+            if ((Original_tranChkID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_tranChkID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranBankID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((long)(Original_tranBankID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranCheckNo == null)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_tranCheckNo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string tranType, global::System.Nullable<global::System.DateTime> tranDate, global::System.Nullable<decimal> tranAmt, string tranName, string tranMemo, global::System.Nullable<int> tranChkID, global::System.Nullable<long> tranBankID, string tranCheckNo) {
+            if ((tranType == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(tranType));
             }
             if ((tranDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(tranDate.Value));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(tranDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((tranAmt.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(tranAmt.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((tranAmt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(tranAmt.Value));
-            }
-            else {
+            if ((tranName == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((tranBankID == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(tranName));
+            }
+            if ((tranMemo == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(tranBankID));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(tranMemo));
             }
-            if ((tranCheckNo == null)) {
+            if ((tranChkID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(tranChkID.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(tranCheckNo));
+            if ((tranBankID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((long)(tranBankID.Value));
             }
-            if ((tranName == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(tranName));
-            }
-            if ((tranMemo == null)) {
+            if ((tranCheckNo == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(tranMemo));
-            }
-            if ((tranChkID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(tranChkID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(tranCheckNo));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -18440,6 +17662,157 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
             finally {
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string tranType, 
+                    global::System.Nullable<global::System.DateTime> tranDate, 
+                    global::System.Nullable<decimal> tranAmt, 
+                    string tranName, 
+                    string tranMemo, 
+                    global::System.Nullable<int> tranChkID, 
+                    global::System.Nullable<long> tranBankID, 
+                    string tranCheckNo, 
+                    int Original_tranNo, 
+                    string Original_tranType, 
+                    global::System.Nullable<global::System.DateTime> Original_tranDate, 
+                    global::System.Nullable<decimal> Original_tranAmt, 
+                    string Original_tranName, 
+                    string Original_tranMemo, 
+                    global::System.Nullable<int> Original_tranChkID, 
+                    global::System.Nullable<long> Original_tranBankID, 
+                    string Original_tranCheckNo) {
+            if ((tranType == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(tranType));
+            }
+            if ((tranDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(tranDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((tranAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(tranAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((tranName == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(tranName));
+            }
+            if ((tranMemo == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(tranMemo));
+            }
+            if ((tranChkID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(tranChkID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((tranBankID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(tranBankID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((tranCheckNo == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(tranCheckNo));
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_tranNo));
+            if ((Original_tranType == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_tranType));
+            }
+            if ((Original_tranDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_tranDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranAmt.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_tranAmt.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranName == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_tranName));
+            }
+            if ((Original_tranMemo == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_tranMemo));
+            }
+            if ((Original_tranChkID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_tranChkID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranBankID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((long)(Original_tranBankID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((Original_tranCheckNo == null)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_tranCheckNo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
         }
@@ -19436,8 +18809,7 @@ SELECT CatID, CatName, CatGrpID, CatType, CatPrintOrd FROM Categories WHERE (Cat
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ChkBanTransNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkBanTransNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CKCUChecking] ([ChkDate], [ChkNo], [ChkDesc], [ChkPymt], [ChkDep], [ChkBalance], [ChkCat], [ChkRec], [ChkMemo], [NewCatID], [ChkVendID], [ChkDepNo], [ChkBanTransNo], [ChkDepImage]) VALUES (@ChkDate, @ChkNo, @ChkDesc, @ChkPymt, @ChkDep, @ChkBalance, @ChkCat, @ChkRec, @ChkMemo, @NewCatID, @ChkVendID, @ChkDepNo, @ChkBanTransNo, @ChkDepImage);
-SELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkRec, ChkMemo, NewCatID, ChkVendID, ChkDepNo, ChkBanTransNo, ChkDepImage FROM CKCUChecking WHERE (ChkID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CKCUChecking] ([ChkDate], [ChkNo], [ChkDesc], [ChkPymt], [ChkDep], [ChkBalance], [ChkCat], [ChkRec], [ChkMemo], [NewCatID], [ChkVendID], [ChkDepNo], [ChkBanTransNo], [ChkDepImage]) VALUES (@ChkDate, @ChkNo, @ChkDesc, @ChkPymt, @ChkDep, @ChkBalance, @ChkCat, @ChkRec, @ChkMemo, @NewCatID, @ChkVendID, @ChkDepNo, @ChkBanTransNo, @ChkDepImage)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChkDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChkNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -19474,9 +18846,7 @@ SELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkR
                 "endID] IS NULL) OR ([ChkVendID] = @Original_ChkVendID)) AND ((@IsNull_ChkDepNo =" +
                 " 1 AND [ChkDepNo] IS NULL) OR ([ChkDepNo] = @Original_ChkDepNo)) AND ((@IsNull_C" +
                 "hkBanTransNo = 1 AND [ChkBanTransNo] IS NULL) OR ([ChkBanTransNo] = @Original_Ch" +
-                "kBanTransNo)));\r\nSELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBala" +
-                "nce, ChkCat, ChkRec, ChkMemo, NewCatID, ChkVendID, ChkDepNo, ChkBanTransNo, ChkD" +
-                "epImage FROM CKCUChecking WHERE (ChkID = @ChkID)";
+                "kBanTransNo)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChkDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChkNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -19519,7 +18889,6 @@ SELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkR
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ChkDepNo", global::System.Data.SqlDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkDepNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ChkBanTransNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkBanTransNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ChkBanTransNo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ChkBanTransNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ChkID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ChkID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19532,7 +18901,7 @@ SELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkR
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkRe" +
@@ -19541,13 +18910,19 @@ SELECT ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkR
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        ChkID, ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkRec, ChkMemo, NewCatID, ChkVendID, ChkDepNo, ChkBanTransNo, ChkDepImage
-FROM            CKCUChecking
-WHERE        (ChkDate >= @BeginDate) AND (ChkDate <= @EndDate)
-ORDER BY ChkDate, ChkID";
+            this._commandCollection[1].CommandText = "SELECT ChkBalance, ChkBanTransNo, ChkCat, ChkDate, ChkDep, ChkDepImage, ChkDepNo," +
+                " ChkDesc, ChkID, ChkMemo, ChkNo, ChkPymt, ChkRec, ChkVendID, newCatID FROM CKCUC" +
+                "hecking WHERE (ChkDate >= @BeginDate) AND (ChkDate <= @EndDate) ORDER BY ChkDate" +
+                ", ChkID";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ChkDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ChkDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT ChkBalance, ChkBanTransNo, ChkCat, ChkDate, ChkDep, ChkDepImage, ChkDepNo," +
+                " ChkDesc, ChkID, ChkMemo, ChkNo, ChkPymt, ChkRec, ChkVendID, newCatID FROM CKCUC" +
+                "hecking ORDER BY ChkDate, ChkID";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19625,6 +19000,30 @@ ORDER BY ChkDate, ChkID";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBySorted(EzraDataSet.CKCUCheckingDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual EzraDataSet.CKCUCheckingDataTable GetDataBySorted() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            EzraDataSet.CKCUCheckingDataTable dataTable = new EzraDataSet.CKCUCheckingDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(EzraDataSet.CKCUCheckingDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
@@ -19655,7 +19054,7 @@ ORDER BY ChkDate, ChkID";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ChkID, global::System.Nullable<global::System.DateTime> Original_ChkDate, string Original_ChkNo, string Original_ChkDesc, global::System.Nullable<decimal> Original_ChkPymt, global::System.Nullable<decimal> Original_ChkDep, global::System.Nullable<decimal> Original_ChkBalance, string Original_ChkCat, global::System.Nullable<bool> Original_ChkRec, string Original_ChkMemo, global::System.Nullable<int> Original_NewCatID, global::System.Nullable<int> Original_ChkVendID, global::System.Nullable<short> Original_ChkDepNo, string Original_ChkBanTransNo) {
+        public virtual int Delete(int Original_ChkID, global::System.Nullable<global::System.DateTime> Original_ChkDate, string Original_ChkNo, string Original_ChkDesc, global::System.Nullable<decimal> Original_ChkPymt, global::System.Nullable<decimal> Original_ChkDep, global::System.Nullable<decimal> Original_ChkBalance, string Original_ChkCat, global::System.Nullable<bool> Original_ChkRec, string Original_ChkMemo, int Original_NewCatID, global::System.Nullable<int> Original_ChkVendID, global::System.Nullable<short> Original_ChkDepNo, string Original_ChkBanTransNo) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ChkID));
             if ((Original_ChkDate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -19729,14 +19128,8 @@ ORDER BY ChkDate, ChkID";
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_ChkMemo));
             }
-            if ((Original_NewCatID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_NewCatID.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_NewCatID));
             if ((Original_ChkVendID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_ChkVendID.Value));
@@ -19781,7 +19174,7 @@ ORDER BY ChkDate, ChkID";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.DateTime> ChkDate, string ChkNo, string ChkDesc, global::System.Nullable<decimal> ChkPymt, global::System.Nullable<decimal> ChkDep, global::System.Nullable<decimal> ChkBalance, string ChkCat, global::System.Nullable<bool> ChkRec, string ChkMemo, global::System.Nullable<int> NewCatID, global::System.Nullable<int> ChkVendID, global::System.Nullable<short> ChkDepNo, string ChkBanTransNo, string ChkDepImage) {
+        public virtual int Insert(global::System.Nullable<global::System.DateTime> ChkDate, string ChkNo, string ChkDesc, global::System.Nullable<decimal> ChkPymt, global::System.Nullable<decimal> ChkDep, global::System.Nullable<decimal> ChkBalance, string ChkCat, global::System.Nullable<bool> ChkRec, string ChkMemo, int NewCatID, global::System.Nullable<int> ChkVendID, global::System.Nullable<short> ChkDepNo, string ChkBanTransNo, string ChkDepImage) {
             if ((ChkDate.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(ChkDate.Value));
             }
@@ -19836,12 +19229,7 @@ ORDER BY ChkDate, ChkID";
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ChkMemo));
             }
-            if ((NewCatID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(NewCatID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(NewCatID));
             if ((ChkVendID.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = ((int)(ChkVendID.Value));
             }
@@ -19896,7 +19284,7 @@ ORDER BY ChkDate, ChkID";
                     string ChkCat, 
                     global::System.Nullable<bool> ChkRec, 
                     string ChkMemo, 
-                    global::System.Nullable<int> NewCatID, 
+                    int NewCatID, 
                     global::System.Nullable<int> ChkVendID, 
                     global::System.Nullable<short> ChkDepNo, 
                     string ChkBanTransNo, 
@@ -19911,11 +19299,10 @@ ORDER BY ChkDate, ChkID";
                     string Original_ChkCat, 
                     global::System.Nullable<bool> Original_ChkRec, 
                     string Original_ChkMemo, 
-                    global::System.Nullable<int> Original_NewCatID, 
+                    int Original_NewCatID, 
                     global::System.Nullable<int> Original_ChkVendID, 
                     global::System.Nullable<short> Original_ChkDepNo, 
-                    string Original_ChkBanTransNo, 
-                    int ChkID) {
+                    string Original_ChkBanTransNo) {
             if ((ChkDate.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(ChkDate.Value));
             }
@@ -19970,12 +19357,7 @@ ORDER BY ChkDate, ChkID";
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(ChkMemo));
             }
-            if ((NewCatID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(NewCatID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(NewCatID));
             if ((ChkVendID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(ChkVendID.Value));
             }
@@ -20073,14 +19455,8 @@ ORDER BY ChkDate, ChkID";
                 this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_ChkMemo));
             }
-            if ((Original_NewCatID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_NewCatID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_NewCatID));
             if ((Original_ChkVendID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_ChkVendID.Value));
@@ -20105,7 +19481,6 @@ ORDER BY ChkDate, ChkID";
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_ChkBanTransNo));
             }
-            this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(ChkID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -20120,42 +19495,6 @@ ORDER BY ChkDate, ChkID";
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    global::System.Nullable<global::System.DateTime> ChkDate, 
-                    string ChkNo, 
-                    string ChkDesc, 
-                    global::System.Nullable<decimal> ChkPymt, 
-                    global::System.Nullable<decimal> ChkDep, 
-                    global::System.Nullable<decimal> ChkBalance, 
-                    string ChkCat, 
-                    global::System.Nullable<bool> ChkRec, 
-                    string ChkMemo, 
-                    global::System.Nullable<int> NewCatID, 
-                    global::System.Nullable<int> ChkVendID, 
-                    global::System.Nullable<short> ChkDepNo, 
-                    string ChkBanTransNo, 
-                    string ChkDepImage, 
-                    int Original_ChkID, 
-                    global::System.Nullable<global::System.DateTime> Original_ChkDate, 
-                    string Original_ChkNo, 
-                    string Original_ChkDesc, 
-                    global::System.Nullable<decimal> Original_ChkPymt, 
-                    global::System.Nullable<decimal> Original_ChkDep, 
-                    global::System.Nullable<decimal> Original_ChkBalance, 
-                    string Original_ChkCat, 
-                    global::System.Nullable<bool> Original_ChkRec, 
-                    string Original_ChkMemo, 
-                    global::System.Nullable<int> Original_NewCatID, 
-                    global::System.Nullable<int> Original_ChkVendID, 
-                    global::System.Nullable<short> Original_ChkDepNo, 
-                    string Original_ChkBanTransNo) {
-            return this.Update(ChkDate, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkRec, ChkMemo, NewCatID, ChkVendID, ChkDepNo, ChkBanTransNo, ChkDepImage, Original_ChkID, Original_ChkDate, Original_ChkNo, Original_ChkDesc, Original_ChkPymt, Original_ChkDep, Original_ChkBalance, Original_ChkCat, Original_ChkRec, Original_ChkMemo, Original_NewCatID, Original_ChkVendID, Original_ChkDepNo, Original_ChkBanTransNo, Original_ChkID);
         }
     }
     
@@ -28735,189 +28074,6 @@ SELECT VendID, VendName, VendAddr1, VendAddr2, VendCity, VendState, VendZip, Ven
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class CKCUCheckingSortedTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public CKCUCheckingSortedTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "CKCUCheckingSorted";
-            tableMapping.ColumnMappings.Add("ChkDate", "ChkDate");
-            tableMapping.ColumnMappings.Add("ChkID", "ChkID");
-            tableMapping.ColumnMappings.Add("ChkNo", "ChkNo");
-            tableMapping.ColumnMappings.Add("ChkDesc", "ChkDesc");
-            tableMapping.ColumnMappings.Add("ChkPymt", "ChkPymt");
-            tableMapping.ColumnMappings.Add("ChkDep", "ChkDep");
-            tableMapping.ColumnMappings.Add("ChkBalance", "ChkBalance");
-            tableMapping.ColumnMappings.Add("ChkCat", "ChkCat");
-            tableMapping.ColumnMappings.Add("ChkRec", "ChkRec");
-            tableMapping.ColumnMappings.Add("ChkMemo", "ChkMemo");
-            tableMapping.ColumnMappings.Add("NewCatID", "NewCatID");
-            tableMapping.ColumnMappings.Add("ChkVendID", "ChkVendID");
-            tableMapping.ColumnMappings.Add("ChkDepNo", "ChkDepNo");
-            tableMapping.ColumnMappings.Add("ChkBanTransNo", "ChkBanTransNo");
-            tableMapping.ColumnMappings.Add("ChkDepImage", "ChkDepImage");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Ezra.Properties.Settings.Default.EzraConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ChkDate, ChkID, ChkNo, ChkDesc, ChkPymt, ChkDep, ChkBalance, ChkCat, ChkRe" +
-                "c, ChkMemo, NewCatID, ChkVendID, ChkDepNo, ChkBanTransNo, ChkDepImage FROM dbo.C" +
-                "KCUCheckingSorted";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EzraDataSet.CKCUCheckingSortedDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EzraDataSet.CKCUCheckingSortedDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            EzraDataSet.CKCUCheckingSortedDataTable dataTable = new EzraDataSet.CKCUCheckingSortedDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class uspGetCheckingRecordsTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -30301,6 +29457,15 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._employeePayDedTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.EmployeePayDed.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._employeePayDedTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._employeePayDatesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.EmployeePayDates.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -30391,15 +29556,6 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._employeePayDedTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.EmployeePayDed.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._employeePayDedTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -30471,6 +29627,14 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._employeesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._employeePayDedTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.EmployeePayDed.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._employeePayDedTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -30554,14 +29718,6 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._employeePayDedTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.EmployeePayDed.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._employeePayDedTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -30572,14 +29728,6 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(EzraDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._employeePayDedTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.EmployeePayDed.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._employeePayDedTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._bankTransTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.BankTrans.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -30657,6 +29805,14 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._employeePayDatesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._employeePayDedTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.EmployeePayDed.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._employeePayDedTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
