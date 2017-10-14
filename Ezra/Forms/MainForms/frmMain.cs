@@ -57,7 +57,7 @@ namespace Ezra
 
         private void btnBankRec_Click(object sender, EventArgs e)
         {
-            frmCheckingDetail detail = new frmCheckingDetail();
+            frmCheckingDetail detail = new frmCheckingDetail("Transactions");
             detail.Show();
         }
 
@@ -69,7 +69,7 @@ namespace Ezra
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            frmCheckingDetail detail = new frmCheckingDetail();
+            frmBankTransToDoDetail detail = new frmBankTransToDoDetail();
             detail.Show();
         }
     }

@@ -1,4 +1,4 @@
-USE [EzraTest]
+USE [Ezra]
 
 IF OBJECT_ID (N'dbo.CKCUChecking', N'U') IS NOT NULL  
     DROP TABLE dbo.CKCUChecking;  
@@ -25,7 +25,7 @@ CREATE TABLE [dbo].[CKCUChecking](
 	[newCatID] [int] NULL,
 	[ChkVendID] [int] NULL,
 	[ChkDepNo] [smallint] NULL,
-	[ChkBanTransNo] [nvarchar](100) NULL,
+	[ChkBanTransNo] [bigint] NULL,
 	[ChkDepImage] [ntext] NULL,
  CONSTRAINT [PK_CKCUChecking] PRIMARY KEY CLUSTERED 
 (
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[BankTrans](
 	[tranType] [nvarchar](10) NULL,
 	[tranDate] [datetime] NULL,
 	[tranAmt] [money] NULL,
-	[tranBankID] [nvarchar](100) NULL,
+	[tranBankID] [bigint] NULL,
 	[tranCheckNo] [nvarchar](15) NULL,
 	[tranName] [nvarchar](50) NULL,
 	[tranMemo] [nvarchar](100) NULL,

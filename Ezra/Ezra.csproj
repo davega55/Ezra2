@@ -72,6 +72,12 @@
     <Compile Include="Forms\MainForms\frmBankTransDetail.Designer.cs">
       <DependentUpon>frmBankTransDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForms\frmBankTransToDoDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\frmBankTransToDoDetail.Designer.cs">
+      <DependentUpon>frmBankTransToDoDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForms\frmChecking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="Forms\MainForms\frmBankTransDetail.resx">
       <DependentUpon>frmBankTransDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\frmBankTransToDoDetail.resx">
+      <DependentUpon>frmBankTransToDoDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\frmChecking.resx">
       <DependentUpon>frmChecking.cs</DependentUpon>

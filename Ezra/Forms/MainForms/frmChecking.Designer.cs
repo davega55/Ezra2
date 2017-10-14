@@ -47,6 +47,8 @@
             this.DgvTxtChkBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCkbChkRec = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvTxtChkDepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChkBanTransNo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bankTransBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvTxtChkMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,10 +64,12 @@
             this.taManager = new Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager();
             this.taCategories = new Ezra.DataAccess.EzraDataSetTableAdapters.CategoriesTableAdapter();
             this.taVendors = new Ezra.DataAccess.EzraDataSetTableAdapters.VendorsTableAdapter();
+            this.bankTransTableAdapter = new Ezra.DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCKCUChecking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsVendors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEzra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsCategories)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankTransBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsCKCUChecking)).BeginInit();
             this.tsbChecking.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +89,7 @@
             this.DgvTxtChkBalance,
             this.dgvCkbChkRec,
             this.dgvTxtChkDepNo,
+            this.ChkBanTransNo,
             this.dgvTxtChkMemo,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn4,
@@ -197,6 +202,22 @@
             this.dgvTxtChkDepNo.Name = "dgvTxtChkDepNo";
             this.dgvTxtChkDepNo.Width = 40;
             // 
+            // ChkBanTransNo
+            // 
+            this.ChkBanTransNo.DataPropertyName = "ChkBanTransNo";
+            this.ChkBanTransNo.DataSource = this.bankTransBindingSource;
+            this.ChkBanTransNo.DisplayMember = "tranBankID";
+            this.ChkBanTransNo.HeaderText = "ChkBanTransNo";
+            this.ChkBanTransNo.Name = "ChkBanTransNo";
+            this.ChkBanTransNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ChkBanTransNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ChkBanTransNo.ValueMember = "tranBankID";
+            // 
+            // bankTransBindingSource
+            // 
+            this.bankTransBindingSource.DataMember = "BankTrans";
+            this.bankTransBindingSource.DataSource = this.dsEzra;
+            // 
             // dgvTxtChkMemo
             // 
             this.dgvTxtChkMemo.DataPropertyName = "ChkMemo";
@@ -305,6 +326,7 @@
             this.tsbAddFromTrans.Name = "tsbAddFromTrans";
             this.tsbAddFromTrans.Size = new System.Drawing.Size(128, 22);
             this.tsbAddFromTrans.Text = "Add From Bank Trans";
+            this.tsbAddFromTrans.Click += new System.EventHandler(this.tsbAddFromTrans_Click);
             // 
             // taCKCUChecking
             // 
@@ -342,6 +364,10 @@
             // 
             this.taVendors.ClearBeforeFill = true;
             // 
+            // bankTransTableAdapter
+            // 
+            this.bankTransTableAdapter.ClearBeforeFill = true;
+            // 
             // frmChecking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,6 +383,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bndsVendors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEzra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsCategories)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bankTransBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsCKCUChecking)).EndInit();
             this.tsbChecking.ResumeLayout(false);
             this.tsbChecking.PerformLayout();
@@ -382,6 +409,8 @@
         private System.Windows.Forms.ToolStripButton tsbRecalc;
         private System.Windows.Forms.ToolStripButton tsbAdd;
         private System.Windows.Forms.ToolStripButton tsbAddFromTrans;
+        private System.Windows.Forms.BindingSource bankTransBindingSource;
+        private DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter bankTransTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkNo;
@@ -392,6 +421,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DgvTxtChkBalance;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvCkbChkRec;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkDepNo;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ChkBanTransNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkMemo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

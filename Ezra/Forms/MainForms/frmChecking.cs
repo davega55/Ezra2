@@ -21,8 +21,9 @@ namespace Ezra
 
         private void frmChecking_Load(object sender, EventArgs e)
         {
-            taVendors.Fill(this.dsEzra.Vendors);
-            taCategories.Fill(this.dsEzra.Categories);
+            bankTransTableAdapter.Fill(dsEzra.BankTrans);
+            taVendors.Fill(dsEzra.Vendors);
+            taCategories.Fill(dsEzra.Categories);
             taCKCUChecking.FillBySorted(dsEzra.CKCUChecking);
             LoadToolbar();
         }
@@ -86,7 +87,7 @@ namespace Ezra
 
         private void tsbAdd_Click(object sender, EventArgs e)
         {
-            frmCheckingDetail detail = new frmCheckingDetail();
+            frmCheckingDetail detail = new frmCheckingDetail("Checking");
             detail.Show();
         }
 
@@ -108,6 +109,12 @@ namespace Ezra
             MessageBox.Show(dgvCKCUChecking[3, e.RowIndex].Value.ToString());
             MessageBox.Show(dgvCKCUChecking[e.ColumnIndex, e.RowIndex].Value.ToString());
             
+        }
+
+        private void tsbAddFromTrans_Click(object sender, EventArgs e)
+        {
+            frmCheckingDetail detail = new frmCheckingDetail("Transactions");
+            detail.Show();
         }
     }
 }
