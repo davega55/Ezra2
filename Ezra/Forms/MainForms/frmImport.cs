@@ -91,9 +91,7 @@ namespace Ezra.Forms.MainForms
                     }
                 case "FITID":
                     {
-                        long fitIDOut = 0;
-                        long.TryParse(line[1], out fitIDOut);
-                        tr.TransFitId = fitIDOut;
+                        tr.TransFitId = line[1];
                         break;
                     }
                 case "CHECKNUM":
@@ -148,7 +146,7 @@ namespace Ezra.Forms.MainForms
         public string TransType { get; set; }
         public DateTime TransDate { get; set; }
         public decimal TransAmount { get; set; }
-        public long TransFitId { get; set; }
+        public string TransFitId { get; set; }
         public string TransChkNum { get; set; }
         public string TransName { get; set; }
         public string TransMemo { get; set; }
@@ -158,7 +156,7 @@ namespace Ezra.Forms.MainForms
             TransType = string.Empty;
             TransDate = DateTime.MinValue;
             TransAmount = 0;
-            TransFitId = 0;
+            TransFitId = string.Empty;
             TransChkNum = string.Empty;
             TransName = string.Empty;
             TransMemo = string.Empty;

@@ -69,7 +69,8 @@ namespace Ezra
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            frmBankTransToDoDetail detail = new frmBankTransToDoDetail();
+            //1179
+            frmBankTransToDoDetail detail = new frmBankTransToDoDetail(1179);
             detail.Show();
         }
     }

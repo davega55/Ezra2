@@ -42,9 +42,9 @@
             System.Windows.Forms.Label chkBanTransNoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBankTransToDoDetail));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtChkID = new System.Windows.Forms.TextBox();
             this.bndsCKCUChecking = new System.Windows.Forms.BindingSource(this.components);
             this.dsEzra = new Ezra.DataAccess.EzraDataSet();
-            this.chkIDTextBox = new System.Windows.Forms.TextBox();
             this.chkDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.chkNoTextBox = new System.Windows.Forms.TextBox();
             this.chkPymtTextBox = new System.Windows.Forms.TextBox();
@@ -57,7 +57,7 @@
             this.chkVendIDComboBox = new System.Windows.Forms.ComboBox();
             this.bndsVendors = new System.Windows.Forms.BindingSource(this.components);
             this.chkDepNoTextBox = new System.Windows.Forms.TextBox();
-            this.chkBanTransNoTextBox = new System.Windows.Forms.TextBox();
+            this.txtChkBanTransNo = new System.Windows.Forms.TextBox();
             this.taCKCUChecking = new Ezra.DataAccess.EzraDataSetTableAdapters.CKCUCheckingTableAdapter();
             this.taManager = new Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager();
             this.bndnCKCUChecking = new System.Windows.Forms.BindingNavigator(this.components);
@@ -73,6 +73,8 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cKCUCheckingBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbViewAllRecords = new System.Windows.Forms.ToolStripButton();
+            this.tsbViewUnlinked = new System.Windows.Forms.ToolStripButton();
             this.taCategories = new Ezra.DataAccess.EzraDataSetTableAdapters.CategoriesTableAdapter();
             this.taVendors = new Ezra.DataAccess.EzraDataSetTableAdapters.VendorsTableAdapter();
             this.bndsBankTrans = new System.Windows.Forms.BindingSource(this.components);
@@ -87,6 +89,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taQueries = new Ezra.DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter();
             chkIDLabel = new System.Windows.Forms.Label();
             chkDateLabel = new System.Windows.Forms.Label();
             chkNoLabel = new System.Windows.Forms.Label();
@@ -211,7 +214,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(chkIDLabel);
-            this.groupBox1.Controls.Add(this.chkIDTextBox);
+            this.groupBox1.Controls.Add(this.txtChkID);
             this.groupBox1.Controls.Add(chkDateLabel);
             this.groupBox1.Controls.Add(this.chkDateDateTimePicker);
             this.groupBox1.Controls.Add(chkNoLabel);
@@ -232,13 +235,22 @@
             this.groupBox1.Controls.Add(chkDepNoLabel);
             this.groupBox1.Controls.Add(this.chkDepNoTextBox);
             this.groupBox1.Controls.Add(chkBanTransNoLabel);
-            this.groupBox1.Controls.Add(this.chkBanTransNoTextBox);
+            this.groupBox1.Controls.Add(this.txtChkBanTransNo);
             this.groupBox1.Location = new System.Drawing.Point(41, 38);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(727, 276);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Check Record";
+            // 
+            // txtChkID
+            // 
+            this.txtChkID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bndsCKCUChecking, "ChkID", true));
+            this.txtChkID.Enabled = false;
+            this.txtChkID.Location = new System.Drawing.Point(62, 29);
+            this.txtChkID.Name = "txtChkID";
+            this.txtChkID.Size = new System.Drawing.Size(70, 20);
+            this.txtChkID.TabIndex = 1;
             // 
             // bndsCKCUChecking
             // 
@@ -249,15 +261,6 @@
             // 
             this.dsEzra.DataSetName = "EzraDataSet";
             this.dsEzra.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // chkIDTextBox
-            // 
-            this.chkIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bndsCKCUChecking, "ChkID", true));
-            this.chkIDTextBox.Enabled = false;
-            this.chkIDTextBox.Location = new System.Drawing.Point(62, 29);
-            this.chkIDTextBox.Name = "chkIDTextBox";
-            this.chkIDTextBox.Size = new System.Drawing.Size(70, 20);
-            this.chkIDTextBox.TabIndex = 1;
             // 
             // chkDateDateTimePicker
             // 
@@ -323,6 +326,7 @@
             // newCatIDComboBox
             // 
             this.newCatIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bndsCKCUChecking, "NewCatID", true));
+            this.newCatIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.bndsCKCUChecking, "NewCatID", true));
             this.newCatIDComboBox.DataSource = this.bndsCategories;
             this.newCatIDComboBox.DisplayMember = "CatName";
             this.newCatIDComboBox.FormattingEnabled = true;
@@ -362,13 +366,14 @@
             this.chkDepNoTextBox.Size = new System.Drawing.Size(50, 20);
             this.chkDepNoTextBox.TabIndex = 25;
             // 
-            // chkBanTransNoTextBox
+            // txtChkBanTransNo
             // 
-            this.chkBanTransNoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bndsCKCUChecking, "ChkBanTransNo", true));
-            this.chkBanTransNoTextBox.Location = new System.Drawing.Point(449, 158);
-            this.chkBanTransNoTextBox.Name = "chkBanTransNoTextBox";
-            this.chkBanTransNoTextBox.Size = new System.Drawing.Size(200, 20);
-            this.chkBanTransNoTextBox.TabIndex = 27;
+            this.txtChkBanTransNo.AcceptsTab = true;
+            this.txtChkBanTransNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bndsCKCUChecking, "ChkBanTransNo", true));
+            this.txtChkBanTransNo.Location = new System.Drawing.Point(449, 158);
+            this.txtChkBanTransNo.Name = "txtChkBanTransNo";
+            this.txtChkBanTransNo.Size = new System.Drawing.Size(200, 20);
+            this.txtChkBanTransNo.TabIndex = 27;
             // 
             // taCKCUChecking
             // 
@@ -416,7 +421,9 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.cKCUCheckingBindingNavigatorSaveItem});
+            this.cKCUCheckingBindingNavigatorSaveItem,
+            this.tsbViewAllRecords,
+            this.tsbViewUnlinked});
             this.bndnCKCUChecking.Location = new System.Drawing.Point(0, 0);
             this.bndnCKCUChecking.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bndnCKCUChecking.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -522,6 +529,30 @@
             this.cKCUCheckingBindingNavigatorSaveItem.Text = "Save Data";
             this.cKCUCheckingBindingNavigatorSaveItem.Click += new System.EventHandler(this.cKCUCheckingBindingNavigatorSaveItem_Click);
             // 
+            // tsbViewAllRecords
+            // 
+            this.tsbViewAllRecords.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbViewAllRecords.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.tsbViewAllRecords.Image = ((System.Drawing.Image)(resources.GetObject("tsbViewAllRecords.Image")));
+            this.tsbViewAllRecords.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbViewAllRecords.Name = "tsbViewAllRecords";
+            this.tsbViewAllRecords.Padding = new System.Windows.Forms.Padding(2, 0, 3, 0);
+            this.tsbViewAllRecords.Size = new System.Drawing.Size(109, 22);
+            this.tsbViewAllRecords.Text = "View All Records";
+            this.tsbViewAllRecords.Click += new System.EventHandler(this.tsbViewAllRecords_Click);
+            // 
+            // tsbViewUnlinked
+            // 
+            this.tsbViewUnlinked.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbViewUnlinked.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.tsbViewUnlinked.Image = ((System.Drawing.Image)(resources.GetObject("tsbViewUnlinked.Image")));
+            this.tsbViewUnlinked.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbViewUnlinked.Name = "tsbViewUnlinked";
+            this.tsbViewUnlinked.Padding = new System.Windows.Forms.Padding(1, 0, 2, 0);
+            this.tsbViewUnlinked.Size = new System.Drawing.Size(143, 22);
+            this.tsbViewUnlinked.Text = "View Unlinked Records";
+            this.tsbViewUnlinked.Click += new System.EventHandler(this.tsbViewUnlinked_Click);
+            // 
             // taCategories
             // 
             this.taCategories.ClearBeforeFill = true;
@@ -541,6 +572,8 @@
             // 
             // bankTransDataGridView
             // 
+            this.bankTransDataGridView.AllowUserToAddRows = false;
+            this.bankTransDataGridView.AllowUserToDeleteRows = false;
             this.bankTransDataGridView.AutoGenerateColumns = false;
             this.bankTransDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bankTransDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -558,6 +591,7 @@
             this.bankTransDataGridView.Name = "bankTransDataGridView";
             this.bankTransDataGridView.Size = new System.Drawing.Size(793, 220);
             this.bankTransDataGridView.TabIndex = 2;
+            this.bankTransDataGridView.SelectionChanged += new System.EventHandler(this.bankTransDataGridView_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -577,38 +611,42 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "tranDate";
-            this.dataGridViewTextBoxColumn3.HeaderText = "tranDate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Date";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 70;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "tranAmt";
-            this.dataGridViewTextBoxColumn4.HeaderText = "tranAmt";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Amount";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "tranBankID";
-            this.dataGridViewTextBoxColumn5.HeaderText = "tranBankID";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Trans Num";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 140;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "tranCheckNo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "tranCheckNo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Chk No";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 70;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "tranName";
-            this.dataGridViewTextBoxColumn7.HeaderText = "tranName";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Name";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "tranMemo";
-            this.dataGridViewTextBoxColumn8.HeaderText = "tranMemo";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Memo";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 200;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -664,7 +702,7 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton cKCUCheckingBindingNavigatorSaveItem;
-        private System.Windows.Forms.TextBox chkIDTextBox;
+        private System.Windows.Forms.TextBox txtChkID;
         private System.Windows.Forms.DateTimePicker chkDateDateTimePicker;
         private System.Windows.Forms.TextBox chkNoTextBox;
         private System.Windows.Forms.TextBox chkPymtTextBox;
@@ -675,7 +713,7 @@
         private System.Windows.Forms.ComboBox newCatIDComboBox;
         private System.Windows.Forms.ComboBox chkVendIDComboBox;
         private System.Windows.Forms.TextBox chkDepNoTextBox;
-        private System.Windows.Forms.TextBox chkBanTransNoTextBox;
+        private System.Windows.Forms.TextBox txtChkBanTransNo;
         private System.Windows.Forms.BindingSource bndsCategories;
         private DataAccess.EzraDataSetTableAdapters.CategoriesTableAdapter taCategories;
         private System.Windows.Forms.BindingSource bndsVendors;
@@ -692,5 +730,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter taQueries;
+        private System.Windows.Forms.ToolStripButton tsbViewAllRecords;
+        private System.Windows.Forms.ToolStripButton tsbViewUnlinked;
     }
 }
