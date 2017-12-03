@@ -48,9 +48,7 @@ namespace Ezra.Forms.MainForms
                 string bankTransNum = taCKCUChecking.GetBankTransNumByCheckID((int)_chkID);
                 if (bankTransNum != string.Empty)
                 {
-                    long bankTNo = 0;
-                    long.TryParse(bankTransNum, out bankTNo);
-                    taBankTrans.FillByBankId(dsEzra.BankTrans, bankTNo);
+                    taBankTrans.FillByBankId(dsEzra.BankTrans, bankTransNum);
                 }
                 else
                 {
@@ -101,6 +99,19 @@ namespace Ezra.Forms.MainForms
         {
             taCKCUChecking.FillByUnlinked(dsEzra.CKCUChecking);
             bndsCKCUChecking.ResetBindings(false);
+        }
+
+        private void bankTransDataGridView_RowContextMenuStripChanged(object sender, DataGridViewRowEventArgs e)
+        {
+            foreach (var cell in e.Row.Cells)
+            {
+                MessageBox.Show(cell.ToString());
+            }
+        }
+
+        private void bankTransDataGridView_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
+        {
+            e.ContextMenuStrip = cmsBankTrans;
         }
     }
 }

@@ -73,5 +73,17 @@ namespace Ezra
             frmBankTransToDoDetail detail = new frmBankTransToDoDetail(1179);
             detail.Show();
         }
+
+        private void btnTransGrid_Click(object sender, EventArgs e)
+        {
+            frmBankTransGrid trans = new frmBankTransGrid();
+            trans.Show();
+        }
+
+        private void btnSplitForm_Click(object sender, EventArgs e)
+        {
+            frmSplitCheckingTrans trans = new frmSplitCheckingTrans();
+            trans.Show();
+        }
     }
 }

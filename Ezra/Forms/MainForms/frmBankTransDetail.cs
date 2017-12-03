@@ -12,8 +12,8 @@ namespace Ezra.Forms.MainForms
 {
     public partial class frmBankTransDetail : Form
     {
-        private long _tranNum;
-        public frmBankTransDetail(long tranNo)
+        private string _tranNum;
+        public frmBankTransDetail(string tranNo)
         {
             _tranNum = tranNo;
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Ezra.Forms.MainForms
 
         private void frmBankTransDetail_Load(object sender, EventArgs e)
         {
-            if (_tranNum != 0)
+            if (_tranNum != string.Empty)
             {
                 taBankTrans.FillByBankId(this.dsEzra.BankTrans, _tranNum);
                 this.Text = "Transaction Detail for " + _tranNum;

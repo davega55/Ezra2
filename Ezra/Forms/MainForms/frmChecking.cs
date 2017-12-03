@@ -26,6 +26,7 @@ namespace Ezra
             taCategories.Fill(dsEzra.Categories);
             taCKCUChecking.FillBySorted(dsEzra.CKCUChecking);
             LoadToolbar();
+            WindowState = FormWindowState.Maximized;
         }
 
         private void LoadToolbar()
@@ -79,8 +80,7 @@ namespace Ezra
         {
             DataGridView dgv = (DataGridView)sender;
             DataGridViewCell cell = dgv.CurrentCell;
-            long cellVal;
-            long.TryParse(cell.Value.ToString(), out cellVal);
+            string cellVal = cell.Value.ToString();
             frmBankTransDetail rec = new frmBankTransDetail(cellVal);
             rec.Show();
         }
@@ -95,7 +95,6 @@ namespace Ezra
         {
             if (dgvCKCUChecking.IsCurrentRowDirty)
             {
-                ////MessageBox.Show("Current row is dirty");
                 Save();
             }
         }
@@ -115,6 +114,20 @@ namespace Ezra
         {
             frmCheckingDetail detail = new frmCheckingDetail("Transactions");
             detail.Show();
+        }
+
+        private void LoadBankTransCombo()
+        {
+
+        }
+
+        private void dgvCKCUChecking_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var test = (DataGridView)sender;
+            if (e.ColumnIndex == 10)
+            {
+                MessageBox.Show(e.Value.ToString());
+            }
         }
     }
 }

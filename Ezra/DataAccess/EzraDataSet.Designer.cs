@@ -17379,23 +17379,29 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        tranNo, tranType, tranDate, tranAmt, tranName, tranMemo, tranChkID," +
-                " tranBankID, tranCheckNo\r\nFROM            BankTrans";
+            this._commandCollection[0].CommandText = "SELECT tranNo, tranType, tranDate, tranAmt, tranName, tranMemo, tranChkID, tranBa" +
+                "nkID, tranCheckNo FROM BankTrans";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT tranAmt, tranBankID, tranCheckNo, tranChkID, tranDate, tranMemo, tranName," +
                 " tranNo, tranType FROM BankTrans WHERE (tranBankID = @tranBId)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranBId", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tranBId", global::System.Data.SqlDbType.NVarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT tranAmt, tranBankID, tranCheckNo, tranChkID, tranDate, tranMemo, tranName," +
-                " tranNo, tranType FROM BankTrans WHERE (tranChkID < 1)";
+            this._commandCollection[2].CommandText = "select CONVERT(char(12), tranDate, 101) + \' | \' + CONVERT(char(12), tranAmt, 1) +" +
+                " \' | \' + \r\nConvert(char(8), tranCheckNo, 0) + \' | \' + CONVERT(char(60), tranName" +
+                ", 0)  + \' | \' +\r\nConvert(char(80), tranMemo, 0) As Data from BankTrans";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT tranAmt, tranBankID, tranCheckNo, tranChkID, tranDate, tranMemo, tranName," +
+                " tranNo, tranType FROM BankTrans WHERE (tranChkID < 1)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17426,13 +17432,13 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByBankId(EzraDataSet.BankTransDataTable dataTable, global::System.Nullable<long> tranBId) {
+        public virtual int FillByBankId(EzraDataSet.BankTransDataTable dataTable, string tranBId) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((tranBId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(tranBId.Value));
+            if ((tranBId == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(tranBId));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -17445,13 +17451,13 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual EzraDataSet.BankTransDataTable GetDataByBankId(global::System.Nullable<long> tranBId) {
+        public virtual EzraDataSet.BankTransDataTable GetDataByBankId(string tranBId) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((tranBId.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((long)(tranBId.Value));
+            if ((tranBId == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(tranBId));
             }
             EzraDataSet.BankTransDataTable dataTable = new EzraDataSet.BankTransDataTable();
             this.Adapter.Fill(dataTable);
@@ -17462,8 +17468,32 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByNotLinked(EzraDataSet.BankTransDataTable dataTable) {
+        public virtual int FillByComboBox(EzraDataSet.BankTransDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual EzraDataSet.BankTransDataTable GetDataByComboBox() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            EzraDataSet.BankTransDataTable dataTable = new EzraDataSet.BankTransDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByNotLinked(EzraDataSet.BankTransDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -17476,7 +17506,7 @@ SELECT balID, balType, balAccount, balCatID, balAmt, balMonth, balYear FROM Bala
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual EzraDataSet.BankTransDataTable GetDataByNotLinked() {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             EzraDataSet.BankTransDataTable dataTable = new EzraDataSet.BankTransDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -28932,7 +28962,7 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[3];
+            this._commandCollection = new global::System.Data.IDbCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection(global::Ezra.Properties.Settings.Default.EzraConnectionString);
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandText = "SELECT Sum(BudAmt) as BudSum FROM Budget where BudYear = @budYear";
@@ -28947,6 +28977,12 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).CommandText = "Select tranNo from BankTrans where tranBankID = @bankID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bankID", global::System.Data.SqlDbType.NVarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "tranBankID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Connection = new global::System.Data.SqlClient.SqlConnection(global::Ezra.Properties.Settings.Default.EzraConnectionString);
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).CommandText = "Update CKCUChecking Set ChkBanTransNo = @transNo\r\nwhere ChkID = @chkID";
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).CommandType = global::System.Data.CommandType.Text;
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transNo", global::System.Data.SqlDbType.NVarChar, 25, global::System.Data.ParameterDirection.Input, 0, 0, "ChkBanTransNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chkID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ChkID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -29043,6 +29079,36 @@ ORDER BY CKCUChecking.ChkDate, CKCUChecking.ChkID";
             else {
                 return ((object)(returnValue));
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateTransNoInChecking(string transNo, int chkID) {
+            global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[3]));
+            if ((transNo == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(transNo));
+            }
+            command.Parameters[1].Value = ((int)(chkID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

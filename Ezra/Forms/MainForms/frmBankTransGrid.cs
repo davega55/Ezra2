@@ -24,10 +24,9 @@ namespace Ezra.Forms.MainForms
 
         private void bankTransBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.bndsBankTrans.EndEdit();
-            this.taManager.UpdateAll(this.dsEzra);
-
+            Validate();
+            bndsBankTrans.EndEdit();
+            taManager.UpdateAll(dsEzra);
         }
     }
 }

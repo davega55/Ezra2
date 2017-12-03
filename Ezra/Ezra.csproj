@@ -120,6 +120,12 @@
     <Compile Include="Forms\MainForms\frmTest.Designer.cs">
       <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForms\frmSplitCheckingTrans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForms\frmSplitCheckingTrans.Designer.cs">
+      <DependentUpon>frmSplitCheckingTrans.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReportForms\frmMonthly.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForms\frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForms\frmSplitCheckingTrans.resx">
+      <DependentUpon>frmSplitCheckingTrans.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForms\frmMonthly.resx">
       <DependentUpon>frmMonthly.cs</DependentUpon>

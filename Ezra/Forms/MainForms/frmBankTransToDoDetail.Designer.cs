@@ -80,6 +80,9 @@
             this.bndsBankTrans = new System.Windows.Forms.BindingSource(this.components);
             this.taBankTrans = new Ezra.DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter();
             this.bankTransDataGridView = new System.Windows.Forms.DataGridView();
+            this.cmsBankTrans = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiCopyData = new System.Windows.Forms.ToolStripMenuItem();
+            this.taQueries = new Ezra.DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,7 +92,6 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taQueries = new Ezra.DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter();
             chkIDLabel = new System.Windows.Forms.Label();
             chkDateLabel = new System.Windows.Forms.Label();
             chkNoLabel = new System.Windows.Forms.Label();
@@ -110,6 +112,7 @@
             this.bndnCKCUChecking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndsBankTrans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankTransDataGridView)).BeginInit();
+            this.cmsBankTrans.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkIDLabel
@@ -591,7 +594,22 @@
             this.bankTransDataGridView.Name = "bankTransDataGridView";
             this.bankTransDataGridView.Size = new System.Drawing.Size(793, 220);
             this.bankTransDataGridView.TabIndex = 2;
+            this.bankTransDataGridView.RowContextMenuStripChanged += new System.Windows.Forms.DataGridViewRowEventHandler(this.bankTransDataGridView_RowContextMenuStripChanged);
+            this.bankTransDataGridView.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.bankTransDataGridView_RowContextMenuStripNeeded);
             this.bankTransDataGridView.SelectionChanged += new System.EventHandler(this.bankTransDataGridView_SelectionChanged);
+            // 
+            // cmsBankTrans
+            // 
+            this.cmsBankTrans.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCopyData});
+            this.cmsBankTrans.Name = "cmsBankTrans";
+            this.cmsBankTrans.Size = new System.Drawing.Size(180, 26);
+            // 
+            // tsmiCopyData
+            // 
+            this.tsmiCopyData.Name = "tsmiCopyData";
+            this.tsmiCopyData.Size = new System.Drawing.Size(179, 22);
+            this.tsmiCopyData.Text = "Copy Data to Check";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -677,6 +695,7 @@
             this.bndnCKCUChecking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bndsBankTrans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bankTransDataGridView)).EndInit();
+            this.cmsBankTrans.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,6 +740,11 @@
         private System.Windows.Forms.BindingSource bndsBankTrans;
         private DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter taBankTrans;
         private System.Windows.Forms.DataGridView bankTransDataGridView;
+        private DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter taQueries;
+        private System.Windows.Forms.ToolStripButton tsbViewAllRecords;
+        private System.Windows.Forms.ToolStripButton tsbViewUnlinked;
+        private System.Windows.Forms.ContextMenuStrip cmsBankTrans;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCopyData;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -730,8 +754,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataAccess.EzraDataSetTableAdapters.QueriesTableAdapter taQueries;
-        private System.Windows.Forms.ToolStripButton tsbViewAllRecords;
-        private System.Windows.Forms.ToolStripButton tsbViewUnlinked;
     }
 }
