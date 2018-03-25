@@ -124,10 +124,10 @@ namespace Ezra
         private void dgvCKCUChecking_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var test = (DataGridView)sender;
-            if (e.ColumnIndex == 10)
-            {
-                MessageBox.Show(e.Value.ToString());
-            }
+            //if (e.ColumnIndex == 10)
+            //{
+            //    MessageBox.Show(e.Value.ToString());
+            //}
         }
     }
 }

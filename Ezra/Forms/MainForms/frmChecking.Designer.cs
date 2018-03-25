@@ -29,30 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChecking));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChecking));
             this.dgvCKCUChecking = new System.Windows.Forms.DataGridView();
-            this.dgvTxtChkId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTxtChkDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTxtChkNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChkVendID = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bndsVendors = new System.Windows.Forms.BindingSource(this.components);
             this.dsEzra = new Ezra.DataAccess.EzraDataSet();
-            this.NewCatID = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bndsCategories = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvTxtChkPymt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTxtChkDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DgvTxtChkBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCkbChkRec = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgvTxtChkDepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChkBanTransNo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bankTransBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvTxtChkMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bndsCKCUChecking = new System.Windows.Forms.BindingSource(this.components);
             this.tsbChecking = new System.Windows.Forms.ToolStrip();
             this.tslDate = new System.Windows.Forms.ToolStripLabel();
@@ -65,6 +50,21 @@
             this.taCategories = new Ezra.DataAccess.EzraDataSetTableAdapters.CategoriesTableAdapter();
             this.taVendors = new Ezra.DataAccess.EzraDataSetTableAdapters.VendorsTableAdapter();
             this.bankTransTableAdapter = new Ezra.DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter();
+            this.dgvTxtChkId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTxtChkDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTxtChkNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChkVendID = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.NewCatID = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvTxtChkPymt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTxtChkDep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DgvTxtChkBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCkbChkRec = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvTxtChkDepNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChkBanTransNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTxtChkMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCKCUChecking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsVendors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsEzra)).BeginInit();
@@ -105,37 +105,6 @@
             this.dgvCKCUChecking.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvCKCUChecking_DataError);
             this.dgvCKCUChecking.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCKCUChecking_RowLeave);
             // 
-            // dgvTxtChkId
-            // 
-            this.dgvTxtChkId.DataPropertyName = "ChkID";
-            this.dgvTxtChkId.HeaderText = "ChkID";
-            this.dgvTxtChkId.Name = "dgvTxtChkId";
-            this.dgvTxtChkId.ReadOnly = true;
-            this.dgvTxtChkId.Visible = false;
-            // 
-            // dgvTxtChkDate
-            // 
-            this.dgvTxtChkDate.DataPropertyName = "ChkDate";
-            this.dgvTxtChkDate.HeaderText = "Date";
-            this.dgvTxtChkDate.Name = "dgvTxtChkDate";
-            // 
-            // dgvTxtChkNo
-            // 
-            this.dgvTxtChkNo.DataPropertyName = "ChkNo";
-            this.dgvTxtChkNo.HeaderText = "Number";
-            this.dgvTxtChkNo.Name = "dgvTxtChkNo";
-            // 
-            // ChkVendID
-            // 
-            this.ChkVendID.DataPropertyName = "ChkVendID";
-            this.ChkVendID.DataSource = this.bndsVendors;
-            this.ChkVendID.DisplayMember = "VendName";
-            this.ChkVendID.HeaderText = "ChkVendID";
-            this.ChkVendID.Name = "ChkVendID";
-            this.ChkVendID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ChkVendID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ChkVendID.ValueMember = "VendID";
-            // 
             // bndsVendors
             // 
             this.bndsVendors.DataMember = "Vendors";
@@ -146,106 +115,15 @@
             this.dsEzra.DataSetName = "EzraDataSet";
             this.dsEzra.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // NewCatID
-            // 
-            this.NewCatID.DataPropertyName = "NewCatID";
-            this.NewCatID.DataSource = this.bndsCategories;
-            this.NewCatID.DisplayMember = "CatName";
-            this.NewCatID.HeaderText = "NewCatID";
-            this.NewCatID.Name = "NewCatID";
-            this.NewCatID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NewCatID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.NewCatID.ValueMember = "CatID";
-            // 
             // bndsCategories
             // 
             this.bndsCategories.DataMember = "Categories";
             this.bndsCategories.DataSource = this.dsEzra;
             // 
-            // dgvTxtChkPymt
-            // 
-            this.dgvTxtChkPymt.DataPropertyName = "ChkPymt";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dgvTxtChkPymt.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTxtChkPymt.HeaderText = "Payment";
-            this.dgvTxtChkPymt.Name = "dgvTxtChkPymt";
-            // 
-            // dgvTxtChkDep
-            // 
-            this.dgvTxtChkDep.DataPropertyName = "ChkDep";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dgvTxtChkDep.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTxtChkDep.HeaderText = "Deposit";
-            this.dgvTxtChkDep.Name = "dgvTxtChkDep";
-            // 
-            // DgvTxtChkBalance
-            // 
-            this.DgvTxtChkBalance.DataPropertyName = "ChkBalance";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.DgvTxtChkBalance.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DgvTxtChkBalance.HeaderText = "Balance";
-            this.DgvTxtChkBalance.Name = "DgvTxtChkBalance";
-            // 
-            // dgvCkbChkRec
-            // 
-            this.dgvCkbChkRec.DataPropertyName = "ChkRec";
-            this.dgvCkbChkRec.HeaderText = "Rec";
-            this.dgvCkbChkRec.Name = "dgvCkbChkRec";
-            this.dgvCkbChkRec.Width = 40;
-            // 
-            // dgvTxtChkDepNo
-            // 
-            this.dgvTxtChkDepNo.DataPropertyName = "ChkDepNo";
-            this.dgvTxtChkDepNo.HeaderText = "DepNo";
-            this.dgvTxtChkDepNo.Name = "dgvTxtChkDepNo";
-            this.dgvTxtChkDepNo.Width = 40;
-            // 
-            // ChkBanTransNo
-            // 
-            this.ChkBanTransNo.DataPropertyName = "ChkBanTransNo";
-            this.ChkBanTransNo.DataSource = this.bankTransBindingSource;
-            this.ChkBanTransNo.DisplayMember = "tranBankID";
-            this.ChkBanTransNo.HeaderText = "ChkBanTransNo";
-            this.ChkBanTransNo.Name = "ChkBanTransNo";
-            this.ChkBanTransNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ChkBanTransNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ChkBanTransNo.ValueMember = "tranBankID";
-            // 
             // bankTransBindingSource
             // 
             this.bankTransBindingSource.DataMember = "BankTrans";
             this.bankTransBindingSource.DataSource = this.dsEzra;
-            // 
-            // dgvTxtChkMemo
-            // 
-            this.dgvTxtChkMemo.DataPropertyName = "ChkMemo";
-            this.dgvTxtChkMemo.HeaderText = "Memo";
-            this.dgvTxtChkMemo.Name = "dgvTxtChkMemo";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "ChkDepImage";
-            this.dataGridViewTextBoxColumn14.HeaderText = "ChkDepImage";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ChkDesc";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ChkDesc";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "ChkCat";
-            this.dataGridViewTextBoxColumn8.HeaderText = "ChkCat";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn8.Visible = false;
             // 
             // bndsCKCUChecking
             // 
@@ -369,6 +247,124 @@
             // 
             this.bankTransTableAdapter.ClearBeforeFill = true;
             // 
+            // dgvTxtChkId
+            // 
+            this.dgvTxtChkId.DataPropertyName = "ChkID";
+            this.dgvTxtChkId.HeaderText = "ChkID";
+            this.dgvTxtChkId.Name = "dgvTxtChkId";
+            this.dgvTxtChkId.ReadOnly = true;
+            this.dgvTxtChkId.Visible = false;
+            // 
+            // dgvTxtChkDate
+            // 
+            this.dgvTxtChkDate.DataPropertyName = "ChkDate";
+            this.dgvTxtChkDate.HeaderText = "Date";
+            this.dgvTxtChkDate.Name = "dgvTxtChkDate";
+            // 
+            // dgvTxtChkNo
+            // 
+            this.dgvTxtChkNo.DataPropertyName = "ChkNo";
+            this.dgvTxtChkNo.HeaderText = "Number";
+            this.dgvTxtChkNo.Name = "dgvTxtChkNo";
+            // 
+            // ChkVendID
+            // 
+            this.ChkVendID.DataPropertyName = "ChkVendID";
+            this.ChkVendID.DataSource = this.bndsVendors;
+            this.ChkVendID.DisplayMember = "VendName";
+            this.ChkVendID.HeaderText = "ChkVendID";
+            this.ChkVendID.Name = "ChkVendID";
+            this.ChkVendID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ChkVendID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ChkVendID.ValueMember = "VendID";
+            // 
+            // NewCatID
+            // 
+            this.NewCatID.DataPropertyName = "NewCatID";
+            this.NewCatID.DataSource = this.bndsCategories;
+            this.NewCatID.DisplayMember = "CatName";
+            this.NewCatID.HeaderText = "NewCatID";
+            this.NewCatID.Name = "NewCatID";
+            this.NewCatID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NewCatID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.NewCatID.ValueMember = "CatID";
+            // 
+            // dgvTxtChkPymt
+            // 
+            this.dgvTxtChkPymt.DataPropertyName = "ChkPymt";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dgvTxtChkPymt.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTxtChkPymt.HeaderText = "Payment";
+            this.dgvTxtChkPymt.Name = "dgvTxtChkPymt";
+            // 
+            // dgvTxtChkDep
+            // 
+            this.dgvTxtChkDep.DataPropertyName = "ChkDep";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dgvTxtChkDep.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTxtChkDep.HeaderText = "Deposit";
+            this.dgvTxtChkDep.Name = "dgvTxtChkDep";
+            // 
+            // DgvTxtChkBalance
+            // 
+            this.DgvTxtChkBalance.DataPropertyName = "ChkBalance";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DgvTxtChkBalance.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DgvTxtChkBalance.HeaderText = "Balance";
+            this.DgvTxtChkBalance.Name = "DgvTxtChkBalance";
+            // 
+            // dgvCkbChkRec
+            // 
+            this.dgvCkbChkRec.DataPropertyName = "ChkRec";
+            this.dgvCkbChkRec.HeaderText = "Rec";
+            this.dgvCkbChkRec.Name = "dgvCkbChkRec";
+            this.dgvCkbChkRec.Width = 40;
+            // 
+            // dgvTxtChkDepNo
+            // 
+            this.dgvTxtChkDepNo.DataPropertyName = "ChkDepNo";
+            this.dgvTxtChkDepNo.HeaderText = "DepNo";
+            this.dgvTxtChkDepNo.Name = "dgvTxtChkDepNo";
+            this.dgvTxtChkDepNo.Width = 40;
+            // 
+            // ChkBanTransNo
+            // 
+            this.ChkBanTransNo.DataPropertyName = "ChkBanTransNo";
+            this.ChkBanTransNo.HeaderText = "ChkBanTransNo";
+            this.ChkBanTransNo.Name = "ChkBanTransNo";
+            this.ChkBanTransNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dgvTxtChkMemo
+            // 
+            this.dgvTxtChkMemo.DataPropertyName = "ChkMemo";
+            this.dgvTxtChkMemo.HeaderText = "Memo";
+            this.dgvTxtChkMemo.Name = "dgvTxtChkMemo";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "ChkDepImage";
+            this.dataGridViewTextBoxColumn14.HeaderText = "ChkDepImage";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ChkDesc";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ChkDesc";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ChkCat";
+            this.dataGridViewTextBoxColumn8.HeaderText = "ChkCat";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
             // frmChecking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -422,7 +418,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DgvTxtChkBalance;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvCkbChkRec;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkDepNo;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ChkBanTransNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChkBanTransNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTxtChkMemo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

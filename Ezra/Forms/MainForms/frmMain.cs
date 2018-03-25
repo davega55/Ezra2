@@ -12,6 +12,14 @@ namespace Ezra
             InitializeComponent();
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            string[] years = Utility.GetAvailableYears();
+            cmbYear.Items.AddRange(years);
+            string[] months = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+            cmbMonth.Items.AddRange(months);
+        }
+
         private void btnChecking_Click(object sender, EventArgs e)
         {
             frmChecking ckcu = new frmChecking();
@@ -41,14 +49,7 @@ namespace Ezra
             monthly.Show();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            string[] years = Utility.GetAvailableYears();
-            cmbYear.Items.AddRange(years);
-            string[] months = CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
-            cmbMonth.Items.AddRange(months);
-        }
-
+        
         private void btnImport_Click(object sender, EventArgs e)
         {
             frmImport import = new frmImport();
@@ -57,8 +58,8 @@ namespace Ezra
 
         private void btnBankRec_Click(object sender, EventArgs e)
         {
-            frmCheckingDetail detail = new frmCheckingDetail("Transactions");
-            detail.Show();
+            frmReconcile rec = new frmReconcile();
+            rec.Show();
         }
 
         private void btnSavings_Click(object sender, EventArgs e)
@@ -67,23 +68,22 @@ namespace Ezra
             sav.Show();
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            //1179
-            frmBankTransToDoDetail detail = new frmBankTransToDoDetail(1179);
-            detail.Show();
-        }
-
         private void btnTransGrid_Click(object sender, EventArgs e)
         {
             frmBankTransGrid trans = new frmBankTransGrid();
             trans.Show();
         }
 
-        private void btnSplitForm_Click(object sender, EventArgs e)
+        private void btnVendors_Click(object sender, EventArgs e)
         {
-            frmSplitCheckingTrans trans = new frmSplitCheckingTrans();
-            trans.Show();
+            frmVendors vendors = new frmVendors();
+            vendors.Show();
+        }
+
+        private void btnCats_Click(object sender, EventArgs e)
+        {
+            frmCategories cats = new frmCategories();
+            cats.Show();
         }
     }
 }

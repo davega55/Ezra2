@@ -39,6 +39,7 @@
             this.bndsBankTrans = new System.Windows.Forms.BindingSource(this.components);
             this.taBankTrans = new Ezra.DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter();
             this.taManager = new Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager();
+            this.taCKCUChecking = new Ezra.DataAccess.EzraDataSetTableAdapters.CKCUCheckingTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DSEzra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bndsBankTrans)).BeginInit();
             this.SuspendLayout();
@@ -131,6 +132,10 @@
             this.taManager.UpdateOrder = Ezra.DataAccess.EzraDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.taManager.VendorsTableAdapter = null;
             // 
+            // taCKCUChecking
+            // 
+            this.taCKCUChecking.ClearBeforeFill = true;
+            // 
             // frmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,5 +167,6 @@
         private System.Windows.Forms.BindingSource bndsBankTrans;
         private DataAccess.EzraDataSetTableAdapters.BankTransTableAdapter taBankTrans;
         private DataAccess.EzraDataSetTableAdapters.TableAdapterManager taManager;
+        private DataAccess.EzraDataSetTableAdapters.CKCUCheckingTableAdapter taCKCUChecking;
     }
 }

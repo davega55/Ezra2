@@ -56,6 +56,7 @@ namespace Ezra.Forms.MainForms
                 }
 
                 taBankTrans.Update(DSEzra);
+                taCKCUChecking.Update(DSEzra);
                 MessageBox.Show(counter.ToString() + " Records added");
                 
             }
@@ -91,7 +92,7 @@ namespace Ezra.Forms.MainForms
                     }
                 case "FITID":
                     {
-                        tr.TransFitId = line[1];
+                        tr.TransFitId = line[1].TrimEnd();
                         break;
                     }
                 case "CHECKNUM":
@@ -111,8 +112,11 @@ namespace Ezra.Forms.MainForms
                     }
                 case "/STMTTRN":
                     {
-                        int result = bndsBankTrans.Find("tranBankID", tr.TransFitId);
-                        if(result < 0)
+                        EzraDataSet.BankTransDataTable dt = new EzraDataSet.BankTransDataTable();
+                        taBankTrans.FillByBankId(dt, tr.TransFitId);
+                        int result = dt.Count;
+                        ////int result = bndsBankTrans.Find("tranBankID", tr.TransFitId);
+                        if(result == 0)
                         {
                             EzraDataSet.BankTransRow btRow = DSEzra.BankTrans.NewBankTransRow();
                             btRow.tranType = tr.TransType;
@@ -123,6 +127,25 @@ namespace Ezra.Forms.MainForms
                             btRow.tranName = tr.TransName;
                             btRow.tranMemo = tr.TransMemo;
                             DSEzra.BankTrans.Rows.Add(btRow);
+
+                            EzraDataSet.CKCUCheckingRow chkRow = DSEzra.CKCUChecking.NewCKCUCheckingRow();
+                            chkRow.ChkDate = tr.TransDate;
+                            if (tr.TransAmount > 0)
+                            {
+                                chkRow.ChkDep = tr.TransAmount;
+                            }
+                            else
+                            {
+                                chkRow.ChkPymt = Math.Abs(tr.TransAmount);
+                            }
+                            chkRow.ChkNo = tr.TransChkNum;
+                            chkRow.ChkMemo = tr.TransMemo;
+                            chkRow.ChkBanTransNo = tr.TransFitId;
+                            DSEzra.CKCUChecking.Rows.Add(chkRow);
+
+                            taBankTrans.Update(DSEzra);
+                            taCKCUChecking.Update(DSEzra);
+
                             counter++;
                         }
                         break;

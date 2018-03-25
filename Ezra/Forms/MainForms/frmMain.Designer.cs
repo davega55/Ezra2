@@ -51,9 +51,7 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.btnBankRec = new System.Windows.Forms.Button();
             this.btnBudget = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.btnTransGrid = new System.Windows.Forms.Button();
-            this.btnSplitForm = new System.Windows.Forms.Button();
+            this.btnTestRec = new System.Windows.Forms.Button();
             this.grpReports.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -221,6 +219,7 @@
             this.btnVendors.TabIndex = 9;
             this.btnVendors.Text = "Vendors";
             this.btnVendors.UseVisualStyleBackColor = true;
+            this.btnVendors.Click += new System.EventHandler(this.btnVendors_Click);
             // 
             // btnContributors
             // 
@@ -239,6 +238,7 @@
             this.btnCats.TabIndex = 8;
             this.btnCats.Text = "Categories";
             this.btnCats.UseVisualStyleBackColor = true;
+            this.btnCats.Click += new System.EventHandler(this.btnCats_Click);
             // 
             // btnDeposits
             // 
@@ -278,44 +278,19 @@
             this.btnBudget.Text = "Budgets";
             this.btnBudget.UseVisualStyleBackColor = true;
             // 
-            // btnTest
+            // btnTestRec
             // 
-            this.btnTest.Location = new System.Drawing.Point(42, 284);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(126, 23);
-            this.btnTest.TabIndex = 12;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // btnTransGrid
-            // 
-            this.btnTransGrid.Location = new System.Drawing.Point(42, 313);
-            this.btnTransGrid.Name = "btnTransGrid";
-            this.btnTransGrid.Size = new System.Drawing.Size(126, 23);
-            this.btnTransGrid.TabIndex = 13;
-            this.btnTransGrid.Text = "Bank Transactions";
-            this.btnTransGrid.UseVisualStyleBackColor = true;
-            this.btnTransGrid.Click += new System.EventHandler(this.btnTransGrid_Click);
-            // 
-            // btnSplitForm
-            // 
-            this.btnSplitForm.Location = new System.Drawing.Point(42, 343);
-            this.btnSplitForm.Name = "btnSplitForm";
-            this.btnSplitForm.Size = new System.Drawing.Size(126, 23);
-            this.btnSplitForm.TabIndex = 14;
-            this.btnSplitForm.Text = "Split Checking Test";
-            this.btnSplitForm.UseVisualStyleBackColor = true;
-            this.btnSplitForm.Click += new System.EventHandler(this.btnSplitForm_Click);
+            this.btnTestRec.Location = new System.Drawing.Point(0, 0);
+            this.btnTestRec.Name = "btnTestRec";
+            this.btnTestRec.Size = new System.Drawing.Size(75, 23);
+            this.btnTestRec.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 483);
-            this.Controls.Add(this.btnSplitForm);
-            this.Controls.Add(this.btnTransGrid);
-            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.btnTestRec);
             this.Controls.Add(this.btnBudget);
             this.Controls.Add(this.btnBankRec);
             this.Controls.Add(this.btnImport);
@@ -363,8 +338,6 @@
         private System.Windows.Forms.Button btnBankRec;
         private System.Windows.Forms.Button btnCombined;
         private System.Windows.Forms.Button btnBudget;
-        private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.Button btnTransGrid;
-        private System.Windows.Forms.Button btnSplitForm;
+        private System.Windows.Forms.Button btnTestRec;
     }
 }

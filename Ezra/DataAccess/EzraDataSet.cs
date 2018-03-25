@@ -4,5 +4,8 @@
 
     partial class EzraDataSet
     {
+        partial class BankTransDataTable
+        {
+        }
     }
 }
